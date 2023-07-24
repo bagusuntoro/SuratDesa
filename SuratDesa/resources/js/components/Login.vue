@@ -70,8 +70,16 @@ export default {
             axios.post('http://localhost:8000/api/auth/login', formData)
                 .then(response => {
                     const token = response.data.access_token;
+                    const expires = response.data.expires_in;
                     localStorage.setItem('token', token);
-                    this.$router.push('/pengajuan-surat');
+                    localStorage.setItem('expires_in', expires);
+                    if (response.data.role==='admin') {
+                        this.$router.push('/admin-dashboard');
+                    }else if (response.data.role === 'user'){
+                        this.$router.push('/user-dashboard');
+                    }else{
+                        this.$router.push('/unauthorized');
+                    }
                 })
                 .catch(error => {
                     console.error(error);

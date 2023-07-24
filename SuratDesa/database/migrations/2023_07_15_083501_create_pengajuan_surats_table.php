@@ -15,16 +15,26 @@ class CreatePengajuanSuratsTable extends Migration
     {
         Schema::create('pengajuan_surats', function (Blueprint $table) {
             $table->id();
+            $table->enum('jenis_surat',['SKTM','Pengantar SKCK']);
             $table->string('nama');
             $table->string('nik')->unique();
+            $table->string('ttl');
             $table->enum('jenis_kelamin',['laki','perempuan']);
-            $table->string('status');
+            $table->string('warganegara');
+            $table->string('agama');
             $table->string('pekerjaan');
-            $table->enum('jenis_surat',['sktm','skck']);
+            $table->string('alamat');
+            $table->string('status');
+            $table->string('bukti_diri');
+            $table->string('keperluan');
+            $table->string('tujuan');
+            $table->date('berlaku_mulai');
+            $table->string('keterangan');
             $table->enum('status_surat',['proses','selesai'])->default('proses');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('surat_id');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('surat_id')->references('id')->on('surats');
         });
     }
 

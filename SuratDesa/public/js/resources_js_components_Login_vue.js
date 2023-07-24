@@ -32,8 +32,16 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('password', this.password);
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/auth/login', formData).then(function (response) {
         var token = response.data.access_token;
+        var expires = response.data.expires_in;
         localStorage.setItem('token', token);
-        _this.$router.push('/pengajuan-surat');
+        localStorage.setItem('expires_in', expires);
+        if (response.data.role === 'admin') {
+          _this.$router.push('/admin-dashboard');
+        } else if (response.data.role === 'user') {
+          _this.$router.push('/user-dashboard');
+        } else {
+          _this.$router.push('/unauthorized');
+        }
       })["catch"](function (error) {
         console.error(error);
         sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({

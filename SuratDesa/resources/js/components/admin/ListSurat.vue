@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <sidebar />
+    <sidebar-admin />
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -15,9 +15,9 @@
           <div class="col-sm-10">
             <div class="row mt-5">
               <div class="col-sm-3">
-                <router-link class="btn btn-primary me-2" to="user-input-note">
+                <!-- <router-link class="btn btn-primary me-2" to="user-input-note">
                   <i class="bi bi-plus"></i>
-                </router-link>
+                </router-link> -->
               </div>
               <div class="col-sm-9"></div>
             </div>
@@ -60,13 +60,14 @@
                         class="btn btn-primary dropdown-toggle"
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
+                        v-if="item.status_surat === 'proses'"
                       >
                         Cetak
                       </button>
                       <ul class="dropdown-menu">
                         <li>
                             <router-link
-                                :to="{ name: 'pdf', params: { id: item.id } }"
+                                :to="{ name: 'skck', params: { id: item.id } }"
                                 class="dropdown-item"
                             >
                                 SKTM
@@ -125,7 +126,11 @@ export default {
     },
     async fetchNote() {
       try {
-        const response = await axios.get("http://localhost:8000/api/pengajuan");
+        const response = await axios.get("http://localhost:8000/api/auth/pengajuan",{
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+          }
+        });
         this.note = response.data.data;
       } catch (error) {
         console.error(error);
@@ -176,6 +181,34 @@ export default {
     },
   },
   created() {
+    axios
+      .get(`http://localhost:8000/api/auth/me/`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        const role = response.data.role; // Get the user's role from the response
+
+        const token = localStorage.getItem("token");
+        const expires_in = localStorage.getItem("expires_in");
+        if (!token || !expires_in || new Date() > new Date(expires_in)) {
+          // If token is missing or expired, redirect to the home page
+          localStorage.removeItem("token");
+          localStorage.removeItem("expires_in");
+          this.$router.push("/");
+        } else if (role !== "admin") {
+          // If the user doesn't have admin privileges, redirect to the unauthorized page
+          this.$router.push("/unauthorized");
+          // console.log(response.data.role)
+        } else {
+          console.log('role: ',role)
+          console.log("success");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     this.fetchNote();
   },
 };

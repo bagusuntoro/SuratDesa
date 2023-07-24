@@ -14,7 +14,7 @@
             </form>
 
             <!-- Topbar Search -->
-            <form
+            <!-- <form
               class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
             >
               <div class="input-group">
@@ -31,7 +31,7 @@
                   </button>
                 </div>
               </div>
-            </form>
+            </form> -->
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -92,16 +92,16 @@
                   aria-expanded="false"
                 >
                   <span class="mr-2 d-none d-lg-inline text-white small"
-                    >Nobita Nobi</span
+                    >Hallo! {{this.name}}</span
                   >
-                  <img class="img-profile rounded-circle" src="/img/nobi.jpg" />
+                  <img class="img-profile rounded-circle" src="/images/avatar.png" />
                 </a>
                 <!-- Dropdown - User Information -->
                 <div
                   class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="userDropdown"
                 >
-                  <a class="dropdown-item" href="#">
+                  <!-- <a class="dropdown-item" href="#">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                   </a>
@@ -113,7 +113,7 @@
                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                     Activity Log
                   </a>
-                  <div class="dropdown-divider"></div>
+                  <div class="dropdown-divider"></div> -->
                   <a
                     class="dropdown-item"
                     href="#"
@@ -131,3 +131,30 @@
           </nav>
           <!-- End of Topbar -->
 </template>
+<script>
+import axios from "axios";
+export default {
+  props: ["id"],
+  data() {
+    return {
+      name:''
+    };
+  },
+    methods: {
+  },
+  created() {
+    axios
+      .get(`http://localhost:8000/api/auth/me/`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        this.name= response.data.name;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  },
+};
+</script>

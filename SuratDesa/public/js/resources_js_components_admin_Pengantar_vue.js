@@ -1,9 +1,9 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_admin_PDF_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_admin_Pengantar_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/PDF.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/PDF.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/Pengantar.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/Pengantar.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -143,18 +143,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               throw new Error("Gagal memperbarui status surat.");
             case 7:
               console.log("Status surat berhasil diperbarui.");
-              _context3.next = 14;
+              _this3.$router.push('/admin-surat');
+              _context3.next = 15;
               break;
-            case 10:
-              _context3.prev = 10;
+            case 11:
+              _context3.prev = 11;
               _context3.t0 = _context3["catch"](0);
               console.error(_context3.t0);
               throw _context3.t0;
-            case 14:
+            case 15:
             case "end":
               return _context3.stop();
           }
-        }, _callee3, null, [[0, 10]]);
+        }, _callee3, null, [[0, 11]]);
       }))();
     }
   },
@@ -209,10 +210,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/PDF.vue?vue&type=template&id=833b1152&scoped=true&":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/PDF.vue?vue&type=template&id=833b1152&scoped=true& ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/Pengantar.vue?vue&type=template&id=57432b4f&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/Pengantar.vue?vue&type=template&id=57432b4f&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -246,128 +247,18 @@ var render = function render() {
     on: {
       click: _vm.exportToPDF
     }
-  }, [_vm._v("Export to PDF")]), _vm._v(" "), _c("div", {
-    attrs: {
-      id: "element-to-convert"
-    }
-  }, [_c("div", {
-    staticClass: "text-black"
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-sm-1"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-10 surat"
-  }, [_c("p", {
-    staticClass: "text-center"
-  }, [_vm._v("KETERANGAN")]), _vm._v(" "), _c("p", {
-    staticClass: "text-center"
-  }, [_vm._v("Surat " + _vm._s(_vm.pengajuanSurat.jenis_surat))]), _vm._v(" "), _c("p", {
-    staticClass: "text-center"
-  }, [_vm._v("PENGANTAR")]), _vm._v(" "), _c("p", {
-    staticClass: "text-center"
-  }, [_vm._v("Nomor : 331/032/ VII/2023")]), _vm._v(" "), _c("p", [_vm._v("\n                  Yang bertandatangan di bawah ini kami Kepala Desa\n                  Tanjungrejo Kecamatan Nguter Kabupaten Sukoharjo,\n                  menerangkan bahwa :\n                ")]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v("Nama")]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v(": " + _vm._s(_vm.pengajuanSurat.nama))]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-3"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v("Tempat tanggal lahir")]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v(": " + _vm._s(_vm.pengajuanSurat.ttl))]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-3"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v("Kewarganegaraan")]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v(": " + _vm._s(_vm.pengajuanSurat.warganegara))]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-3"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v("Agama")]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v(": " + _vm._s(_vm.pengajuanSurat.agama))]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-3"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v("Pekerjaan")]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v(": " + _vm._s(_vm.pengajuanSurat.pekerjaan))]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-3"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v("Alamat KTP")]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v(": " + _vm._s(_vm.pengajuanSurat.alamat))]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-3"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v("Surat Bukti Diri")]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v(": " + _vm._s(_vm.pengajuanSurat.bukti_diri))]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-3"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v("Keperluan")]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v(": " + _vm._s(_vm.pengajuanSurat.keperluan))]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-3"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v("Tujuan")]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v(": " + _vm._s(_vm.pengajuanSurat.tujuan))]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-3"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v("Berlaku Mulai")]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v(": " + _vm._s(_vm.pengajuanSurat.berlaku_mulai))]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-3"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v("Keterangan Lain-lain")]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-4"
-  }, [_vm._v(": " + _vm._s(_vm.pengajuanSurat.keterangan))]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-3"
-  })]), _vm._v(" "), _c("p", [_vm._v("\n                  Demikian untuk menjadikan maklum bagi yang berkepentingan.\n                ")]), _vm._v(" "), _c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-sm-9"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-3"
-  }, [_vm._v("\n                    Tanjungrejo, " + _vm._s(_vm.pengajuanSurat.created_at) + "\n                  ")])]), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-1"
-  })])])])])], 1), _vm._v(" "), _c("footer")])], 1);
+  }, [_vm._v("Export to PDF")]), _vm._v(" "), _vm._m(0)])], 1), _vm._v(" "), _c("footer")])], 1);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
+    attrs: {
+      id: "element-to-convert"
+    }
+  }, [_c("div", {
+    staticClass: "text-black"
+  }, [_c("div", {
     staticClass: "row mt-5"
   }, [_c("div", {
     staticClass: "col-sm-1"
@@ -389,31 +280,125 @@ var staticRenderFns = [function () {
     staticClass: "text-center fw-bold"
   }, [_vm._v("DESA TANJUNGREJO")]), _vm._v(" "), _c("p", [_vm._v("\n                  Alamat : Jl. Alternatif Pengkol-Wonogiri KM 03 Tanjungrejo,\n                  Sukoharjo\n                ")])]), _vm._v(" "), _c("div", {
     staticClass: "col-sm-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
+  })]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-sm-1"
   }), _vm._v(" "), _c("div", {
     staticClass: "col-sm-10 surat"
-  }, [_c("hr"), _vm._v(" "), _c("p", [_vm._v("No Kode Desa/Kelurahan")]), _vm._v(" "), _c("p", [_vm._v("33 11 052001")])]), _vm._v(" "), _c("div", {
+  }, [_c("hr"), _vm._v(" "), _c("h6", {
+    staticClass: "fw-bold text-center"
+  }, [_vm._v("No Kode Desa/Kelurahan")]), _vm._v(" "), _c("p", {
+    staticClass: "text-center"
+  }, [_vm._v("Nomor : 145/12   /VI/2023")]), _vm._v(" "), _c("p", [_vm._v("Yang bertanda tangan dibawah ini menerangkan bahwa\t:")]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
     staticClass: "col-sm-1"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-4"
+  }, [_c("p", [_vm._v("1.\tNama")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-7"
+  }, [_c("p", [_vm._v(":")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-sm-1"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-4"
+  }, [_c("p", [_vm._v("2. Tempat Tgl. Lahir")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-7"
+  }, [_c("p", [_vm._v(":")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-sm-1"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-4"
+  }, [_c("p", [_vm._v("3.\tKewarganegaraan & Agama")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-7"
+  }, [_c("p", [_vm._v(":")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-sm-1"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-4"
+  }, [_c("p", [_vm._v("4.\tPekerjaan")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-7"
+  }, [_c("p", [_vm._v(":")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-sm-1"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-4"
+  }, [_c("p", [_vm._v("5. Tempat Tinggal")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-7"
+  }, [_c("p", [_vm._v(":")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-sm-1"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-4"
+  }, [_c("p", [_vm._v("6.\tSurat bukti diri")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-7"
+  }, [_c("p", [_vm._v(":")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-sm-1"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-4"
+  }, [_c("p", [_vm._v("7.\tKeperluan")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-7"
+  }, [_c("p", [_vm._v(":")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-sm-1"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-4"
+  }, [_c("p", [_vm._v("8. Tujuan")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-7"
+  }, [_c("p", [_vm._v(":")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-sm-1"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-4"
+  }, [_c("p", [_vm._v("9.\tBerlaku")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-7"
+  }, [_c("p", [_vm._v(":")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-sm-1"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-4"
+  }, [_c("p", [_vm._v("10.\tKeterangan lain")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-7"
+  }, [_c("p", [_vm._v(":")])])]), _vm._v(" "), _c("p", [_vm._v("Demikian surat pengantar ini dibuat untuk dapat digunakan sebagaimana mestinya.")]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-sm-6"
-  }, [_c("p", [_vm._v("Pemohon")])]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-6 float-end"
+  }, [_vm._v("Tanjungrejo,")])]), _vm._v(" "), _c("div", {
+    staticClass: "row mt-3"
+  }, [_c("div", {
     staticClass: "col-sm-6"
-  }, [_c("p", {
-    staticClass: "float-end"
-  }, [_vm._v("Sekretaris Desa")])])]);
+  }, [_c("p", [_vm._v("Tanda Tangan Pemegang")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-6 float-end"
+  }, [_c("p", [_vm._v("Sekretaris Desa Tanjungrejo")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row mt-5"
+  }, [_c("div", {
+    staticClass: "col-sm-6"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-6 float-end fw-bold"
+  }, [_vm._v("(FERI PRIHANANTO, S.E)")])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-1"
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-sm-1"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-10"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-1"
+  })])])]);
 }];
 render._withStripped = true;
 
@@ -10701,10 +10686,10 @@ var St=function(){function t(){this.pos=0,this.bufferLength=0,this.eof=!1,this.b
 
 /***/ }),
 
-/***/ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/PDF.vue?vue&type=style&index=0&id=833b1152&scoped=true&lang=css&":
-/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/PDF.vue?vue&type=style&index=0&id=833b1152&scoped=true&lang=css& ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/Pengantar.vue?vue&type=style&index=0&id=57432b4f&scoped=true&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/Pengantar.vue?vue&type=style&index=0&id=57432b4f&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -10718,17 +10703,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.surat[data-v-833b1152] {\r\n  background-color: #ffffff !important;\n}\nhr[data-v-833b1152] {\r\n  border: none;\r\n  height: 3px;\r\n  /* Set the hr color */\r\n  color: #000000 !important; /* old IE */\r\n  background-color: #000000 !important; /* Modern Browsers */\n}\n#app[data-v-833b1152] {\r\n  margin-top: 60px;\r\n  text-align: center;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.surat[data-v-57432b4f] {\r\n  background-color: #ffffff !important;\n}\nhr[data-v-57432b4f] {\r\n  border: none;\r\n  height: 3px;\r\n  /* Set the hr color */\r\n  color: #000000 !important; /* old IE */\r\n  background-color: #000000 !important; /* Modern Browsers */\n}\n#app[data-v-57432b4f] {\r\n  margin-top: 60px;\r\n  /* text-align: center; */\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/PDF.vue?vue&type=style&index=0&id=833b1152&scoped=true&lang=css&":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/PDF.vue?vue&type=style&index=0&id=833b1152&scoped=true&lang=css& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/Pengantar.vue?vue&type=style&index=0&id=57432b4f&scoped=true&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/Pengantar.vue?vue&type=style&index=0&id=57432b4f&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -10738,7 +10723,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PDF_vue_vue_type_style_index_0_id_833b1152_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PDF.vue?vue&type=style&index=0&id=833b1152&scoped=true&lang=css& */ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/PDF.vue?vue&type=style&index=0&id=833b1152&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Pengantar_vue_vue_type_style_index_0_id_57432b4f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Pengantar.vue?vue&type=style&index=0&id=57432b4f&scoped=true&lang=css& */ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/Pengantar.vue?vue&type=style&index=0&id=57432b4f&scoped=true&lang=css&");
 
             
 
@@ -10747,18 +10732,18 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PDF_vue_vue_type_style_index_0_id_833b1152_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Pengantar_vue_vue_type_style_index_0_id_57432b4f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PDF_vue_vue_type_style_index_0_id_833b1152_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Pengantar_vue_vue_type_style_index_0_id_57432b4f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
-/***/ "./resources/js/components/admin/PDF.vue":
-/*!***********************************************!*\
-  !*** ./resources/js/components/admin/PDF.vue ***!
-  \***********************************************/
+/***/ "./resources/js/components/admin/Pengantar.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/admin/Pengantar.vue ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -10766,9 +10751,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _PDF_vue_vue_type_template_id_833b1152_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PDF.vue?vue&type=template&id=833b1152&scoped=true& */ "./resources/js/components/admin/PDF.vue?vue&type=template&id=833b1152&scoped=true&");
-/* harmony import */ var _PDF_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PDF.vue?vue&type=script&lang=js& */ "./resources/js/components/admin/PDF.vue?vue&type=script&lang=js&");
-/* harmony import */ var _PDF_vue_vue_type_style_index_0_id_833b1152_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PDF.vue?vue&type=style&index=0&id=833b1152&scoped=true&lang=css& */ "./resources/js/components/admin/PDF.vue?vue&type=style&index=0&id=833b1152&scoped=true&lang=css&");
+/* harmony import */ var _Pengantar_vue_vue_type_template_id_57432b4f_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pengantar.vue?vue&type=template&id=57432b4f&scoped=true& */ "./resources/js/components/admin/Pengantar.vue?vue&type=template&id=57432b4f&scoped=true&");
+/* harmony import */ var _Pengantar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pengantar.vue?vue&type=script&lang=js& */ "./resources/js/components/admin/Pengantar.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Pengantar_vue_vue_type_style_index_0_id_57432b4f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pengantar.vue?vue&type=style&index=0&id=57432b4f&scoped=true&lang=css& */ "./resources/js/components/admin/Pengantar.vue?vue&type=style&index=0&id=57432b4f&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -10779,27 +10764,27 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _PDF_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _PDF_vue_vue_type_template_id_833b1152_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _PDF_vue_vue_type_template_id_833b1152_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _Pengantar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Pengantar_vue_vue_type_template_id_57432b4f_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Pengantar_vue_vue_type_template_id_57432b4f_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  "833b1152",
+  "57432b4f",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/admin/PDF.vue"
+component.options.__file = "resources/js/components/admin/Pengantar.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/admin/PDF.vue?vue&type=script&lang=js&":
-/*!************************************************************************!*\
-  !*** ./resources/js/components/admin/PDF.vue?vue&type=script&lang=js& ***!
-  \************************************************************************/
+/***/ "./resources/js/components/admin/Pengantar.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/admin/Pengantar.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -10807,37 +10792,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PDF_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PDF.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/PDF.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PDF_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Pengantar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Pengantar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/Pengantar.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Pengantar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/admin/PDF.vue?vue&type=template&id=833b1152&scoped=true&":
-/*!******************************************************************************************!*\
-  !*** ./resources/js/components/admin/PDF.vue?vue&type=template&id=833b1152&scoped=true& ***!
-  \******************************************************************************************/
+/***/ "./resources/js/components/admin/Pengantar.vue?vue&type=template&id=57432b4f&scoped=true&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/admin/Pengantar.vue?vue&type=template&id=57432b4f&scoped=true& ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PDF_vue_vue_type_template_id_833b1152_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PDF_vue_vue_type_template_id_833b1152_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Pengantar_vue_vue_type_template_id_57432b4f_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Pengantar_vue_vue_type_template_id_57432b4f_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PDF_vue_vue_type_template_id_833b1152_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PDF.vue?vue&type=template&id=833b1152&scoped=true& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/PDF.vue?vue&type=template&id=833b1152&scoped=true&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Pengantar_vue_vue_type_template_id_57432b4f_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Pengantar.vue?vue&type=template&id=57432b4f&scoped=true& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/Pengantar.vue?vue&type=template&id=57432b4f&scoped=true&");
 
 
 /***/ }),
 
-/***/ "./resources/js/components/admin/PDF.vue?vue&type=style&index=0&id=833b1152&scoped=true&lang=css&":
-/*!********************************************************************************************************!*\
-  !*** ./resources/js/components/admin/PDF.vue?vue&type=style&index=0&id=833b1152&scoped=true&lang=css& ***!
-  \********************************************************************************************************/
+/***/ "./resources/js/components/admin/Pengantar.vue?vue&type=style&index=0&id=57432b4f&scoped=true&lang=css&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/admin/Pengantar.vue?vue&type=style&index=0&id=57432b4f&scoped=true&lang=css& ***!
+  \**************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PDF_vue_vue_type_style_index_0_id_833b1152_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PDF.vue?vue&type=style&index=0&id=833b1152&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/PDF.vue?vue&type=style&index=0&id=833b1152&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Pengantar_vue_vue_type_style_index_0_id_57432b4f_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Pengantar.vue?vue&type=style&index=0&id=57432b4f&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/Pengantar.vue?vue&type=style&index=0&id=57432b4f&scoped=true&lang=css&");
 
 
 /***/ })

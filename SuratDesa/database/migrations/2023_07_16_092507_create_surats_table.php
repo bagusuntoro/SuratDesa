@@ -17,8 +17,10 @@ class CreateSuratsTable extends Migration
             $table->id();
             $table->string('surat');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('pengajuan_id');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('pengajuan_id')->references('id')->on('pengajuan_surats');
         });
     }
 

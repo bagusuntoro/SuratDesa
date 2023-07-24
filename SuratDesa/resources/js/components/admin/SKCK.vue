@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <sidebar />
+    <sidebar-admin />
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -44,7 +44,7 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-10 surat">
                   <p class="text-center">KETERANGAN</p>
-                  <p class="text-center">Surat …………………………………</p>
+                  <p class="text-center">Surat {{pengajuanSurat.jenis_surat}}</p>
                   <p class="text-center">PENGANTAR</p>
                   <p class="text-center">Nomor : 331/032/ VII/2023</p>
                   <p>
@@ -59,17 +59,17 @@
                   </div>
                   <div class="row">
                     <div class="col-sm-4">Tempat tanggal lahir</div>
-                    <div class="col-sm-4">:</div>
+                    <div class="col-sm-4">: {{pengajuanSurat.ttl}}</div>
                     <div class="col-sm-3"></div>
                   </div>
                   <div class="row">
                     <div class="col-sm-4">Kewarganegaraan</div>
-                    <div class="col-sm-4">: Indonesia</div>
+                    <div class="col-sm-4">: {{pengajuanSurat.warganegara}}</div>
                     <div class="col-sm-3"></div>
                   </div>
                   <div class="row">
                     <div class="col-sm-4">Agama</div>
-                    <div class="col-sm-4">:</div>
+                    <div class="col-sm-4">: {{pengajuanSurat.agama}}</div>
                     <div class="col-sm-3"></div>
                   </div>
                   <div class="row">
@@ -79,32 +79,32 @@
                   </div>
                   <div class="row">
                     <div class="col-sm-4">Alamat KTP</div>
-                    <div class="col-sm-4">:</div>
+                    <div class="col-sm-4">: {{pengajuanSurat.alamat}}</div>
                     <div class="col-sm-3"></div>
                   </div>
                   <div class="row">
                     <div class="col-sm-4">Surat Bukti Diri</div>
-                    <div class="col-sm-4">:</div>
+                    <div class="col-sm-4">: {{pengajuanSurat.bukti_diri}}</div>
                     <div class="col-sm-3"></div>
                   </div>
                   <div class="row">
                     <div class="col-sm-4">Keperluan</div>
-                    <div class="col-sm-4">:</div>
+                    <div class="col-sm-4">: {{pengajuanSurat.keperluan}}</div>
                     <div class="col-sm-3"></div>
                   </div>
                   <div class="row">
                     <div class="col-sm-4">Tujuan</div>
-                    <div class="col-sm-4">:</div>
+                    <div class="col-sm-4">: {{pengajuanSurat.tujuan}}</div>
                     <div class="col-sm-3"></div>
                   </div>
                   <div class="row">
                     <div class="col-sm-4">Berlaku Mulai</div>
-                    <div class="col-sm-4">:</div>
+                    <div class="col-sm-4">: {{pengajuanSurat.berlaku_mulai}}</div>
                     <div class="col-sm-3"></div>
                   </div>
                   <div class="row">
                     <div class="col-sm-4">Keterangan Lain-lain</div>
-                    <div class="col-sm-4">:</div>
+                    <div class="col-sm-4">: {{pengajuanSurat.keterangan}}</div>
                     <div class="col-sm-3"></div>
                   </div>
                   <p>
@@ -151,86 +151,138 @@ export default {
       pengajuanSurat: [],
       fileName: "",
       itemID: null,
+      user_id: "",
     };
   },
   name: "app",
   methods: {
-    async fetchData() {
-      this.itemID = this.$route.params.id;
-      const response = await axios.get(`/api/pengajuan/${this.itemID}`);
-      console.log("id :", this.itemID);
-      this.pengajuanSurat = response.data.data;
+  async fetchData() {
+    this.itemID = this.$route.params.id;
+    const response = await axios.get(`/api/auth/pengajuan/${this.itemID}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+    console.log("id :", this.itemID);
+    this.pengajuanSurat = response.data.data;
 
-      // Format the created_at field to Asia/Jakarta timezone with "dd-mm-yyyy" format
-      const created_at = new Date(this.pengajuanSurat.created_at);
-      const options = {
-        timeZone: "Asia/Jakarta",
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-      };
-      this.pengajuanSurat.created_at = created_at
-        .toLocaleString("en-US", options)
-        .replace(",", "");
+    // Format the created_at field to Asia/Jakarta timezone with "dd-mm-yyyy" format
+    const created_at = new Date(this.pengajuanSurat.created_at);
+    const options = {
+      timeZone: "Asia/Jakarta",
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    };
+    this.pengajuanSurat.created_at = created_at
+      .toLocaleString("en-US", options)
+      .replace(",", "");
 
-      console.log("data :", this.pengajuanSurat.created_at);
-    },
-    // tesst    
-    exportToPDF() {
-  // Ekspor ke PDF menggunakan html2pdf
-  const elementToConvert = document.getElementById("element-to-convert");
-  html2pdf(elementToConvert, {
-    margin: [10, 20, 10, 20],
-    filename: "surat_pengantar.pdf",
-    image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-  }).then((pdfData) => {
-    // Panggil fungsi untuk mengirimkan data PDF ke API
-    this.sendPDFToAPI(pdfData);
-  });
-},
-
-sendPDFToAPI(pdfData) {
-  // Ubah data PDF ke format yang sesuai dengan API
-  // Misalnya, jika API menerima data sebagai FormData:
-  const formData = new FormData();
-  formData.append("file", new Blob([pdfData], { type: "application/pdf" }), "surat_pengantar.pdf");
-    console.log("data :",formData)
-  // Kirim data PDF ke API menggunakan metode POST dengan Fetch API
-  fetch("api/surat", {
-    method: "POST",
-    body: formData,
-  })
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Gagal mengirimkan PDF ke API.");
-    }
-    console.log("PDF berhasil dikirim ke API.");
-    // Lakukan tindakan lain setelah berhasil mengirimkan PDF ke API
-  })
-  .catch((error) => {
-    console.error(error);
-    // Tangani kesalahan jika terjadi kesalahan dalam mengirimkan PDF ke API
-  });
-},
-
-
-
-
-
-    // successs
-    // exportToPDF() {
-    //   html2pdf(document.getElementById("element-to-convert"), {
-    //     margin: [10, 20, 10, 20], // Atur margin bagian atas, kanan, bawah, kiri
-    //     filename: "surat_pengantar.pdf",
-    //     image: { type: "jpeg", quality: 0.98 }, // Kualitas gambar (opsional)
-    //     html2canvas: { scale: 2 }, // Scale HTML2Canvas (opsional)
-    //     jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }, // Format PDF (opsional)
-    //   });
-    // },
+    console.log("data :", this.pengajuanSurat.created_at);
   },
+
+  // tesst
+  async exportToPDF() {
+    const elementToConvert = document.getElementById("element-to-convert");
+    const pdfData = await html2pdf().from(elementToConvert).output("blob");
+
+    const formData = new FormData();
+    formData.append("surat", pdfData, "surat_pengantar.pdf");
+    formData.append("user_id", this.pengajuanSurat.user_id); // Memperbaiki 'user_id' yang sebelumnya adalah 'this.user_id'
+    formData.append("pengajuan_id", this.pengajuanSurat.id);
+
+    try {
+      const response = await axios.post(`/api/auth/surat`, formData, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      console.log('test',response.data.message)
+      if (!response.data.message) { // Mengubah pengecekan respon karena tidak ada response.ok pada axios
+        throw new Error("Gagal mengirimkan PDF ke API.");
+      }
+
+      console.log("PDF berhasil dikirim ke API.");
+      await this.updateStatus();
+      // Lakukan tindakan lain setelah berhasil mengirimkan PDF ke API
+    } catch (error) {
+      console.error(error);
+      // Tangani kesalahan jika terjadi masalah saat mengirimkan PDF ke API
+    }
+  },
+
+  // update status
+async updateStatus() {
+  try {
+    const statusData = { status_surat: "selesai" };
+    const response = await axios.put(
+      `/api/auth/pengajuan/${this.pengajuanSurat.id}`,
+      statusData,
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      }
+    );
+
+    if (!response.data.message) {
+      throw new Error("Gagal memperbarui status surat.");
+    }
+
+    console.log("Status surat berhasil diperbarui.");
+    this.$router.push('/admin-surat');
+  } catch (error) {
+    console.error(error);
+    throw error; // Lanjutkan melemparkan error ke pemanggil fungsi jika terjadi kesalahan
+  }
+},
+
+},
+
   created() {
+    axios
+      .get(`http://localhost:8000/api/auth/me/`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        const role = response.data.role; // Get the user's role from the response
+        this.user_id = response.data.id;
+
+        const token = localStorage.getItem("token");
+        const expires_in = localStorage.getItem("expires_in");
+        if (!token || !expires_in || new Date() > new Date(expires_in)) {
+          // If token is missing or expired, redirect to the home page
+          localStorage.removeItem("token");
+          localStorage.removeItem("expires_in");
+          this.$router.push("/");
+        } else if (role !== "admin") {
+          // If the admin doesn't have admin privileges, redirect to the unauthorized page
+          this.$router.push("/unauthorized");
+          // console.log(response.data.role)
+        } else {
+          console.log('role: ',role)
+          console.log("success");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+
+    // axios
+    //   .get(`http://localhost:8000/api/auth/me/`, {
+    //     headers: {
+    //       Authorization: "Bearer " + localStorage.getItem("token"),
+    //     },
+    //   }) // Gunakan properti 'id' sebagai bagian dari URL endpoint
+    //   .then((response) => {
+    //     this.user_id = response.data.id;
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
     this.fetchData();
     // console.log(Vue.version)
   },

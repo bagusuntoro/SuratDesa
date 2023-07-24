@@ -11,9 +11,9 @@
       href="#"
     >
       <div class="sidebar-brand-icon mt-2">
-        <img src="/img/logo.png" alt="logo" width="50" />
+        <img src="/images/logo.png" alt="logo" width="50" />
       </div>
-      <div class="sidebar-brand-text mx-3">Tally <sup>Sheet</sup></div>
+      <div class="sidebar-brand-text mx-3">Pengajuan <sup>Surat</sup></div>
     </a>
 
     <!-- Divider -->
@@ -30,14 +30,6 @@
     </li>
 
     <!-- Nav Item - Barang -->
-    <li class="nav-item">
-      <router-link class="nav-link" to="/admin-warga">
-        <i class="bi bi-boxes"></i>
-        <span>Warga</span>
-      </router-link>
-    </li>
-
-    <!-- Nav Item - note -->
     <li class="nav-item">
       <router-link class="nav-link" to="/admin-surat">
         <i class="bi bi-journal-text"></i>

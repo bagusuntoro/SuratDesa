@@ -11,9 +11,9 @@
       href="#"
     >
       <div class="sidebar-brand-icon mt-2">
-        <img src="/img/logo.png" alt="logo" width="50" />
+        <img src="/images/logo.png" alt="logo" width="50" />
       </div>
-      <div class="sidebar-brand-text mx-3">Tally <sup>Sheet</sup></div>
+      <div class="sidebar-brand-text mx-3">Pengajuan <sup>Surat</sup></div>
     </a>
 
     <!-- Divider -->
@@ -23,7 +23,7 @@
     <div class="sidebar-heading mt-5">Menu</div>
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-      <router-link class="nav-link" to="/admin-dashboard">
+      <router-link class="nav-link" to="/user-dashboard">
         <i class="bi bi-speedometer2"></i>
         <span>Dashboard</span>
       </router-link>
@@ -37,38 +37,6 @@
       </router-link>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">Others</div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a
-        class="nav-link collapsed"
-        href="#"
-        data-toggle="collapse"
-        data-target="#collapsePages"
-        aria-expanded="true"
-        aria-controls="collapsePages"
-      >
-        <i class="fas fa-fw fa-folder"></i>
-        <span>Users</span>
-      </a>
-      <div
-        id="collapsePages"
-        class="collapse"
-        aria-labelledby="headingPages"
-        data-parent="#accordionSidebar"
-      >
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Management Users</h6>
-          <a class="collapse-item" href="#l">Data User</a>
-          <a class="collapse-item" href="#">Data Admin</a>
-        </div>
-      </div>
-    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block" />

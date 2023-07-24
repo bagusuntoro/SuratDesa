@@ -9,7 +9,17 @@ class PengajuanSuratController extends Controller
 {
     public function listPengajuanSurat()
     {
-        $data = PengajuanSurat::all();
+        $data = PengajuanSurat::with('surat')->get();
+
+        return response()->json([
+            'message' => 'success',
+            'data' => $data
+        ]);
+    }
+
+    public function pengajuanByUser($id)
+    {
+        $data = PengajuanSurat::where('user_id', $id)->with('surat')->get();
         return response()->json([
             'message' => 'success',
             'data' => $data
@@ -28,22 +38,40 @@ class PengajuanSuratController extends Controller
     public function createPengajuanSurat(Request $request)
     {
         $validateData = $request->validate([
-            'nama' => 'required', 
-            'nik' => 'required', 
-            'jenis_kelamin' => 'required', 
-            'status' => 'required', 
-            'pekerjaan' => 'required', 
-            'jenis_surat' => 'required', 
+            'jenis_surat' => 'required',
+            'nama' => 'required',
+            'nik' => 'required',
+            'ttl' => 'required',
+            'jenis_kelamin' => 'required',
+            'warganegara' => 'required',
+            'agama' => 'required',
+            'pekerjaan' => 'required',
+            'alamat' => 'required',
+            'status' => 'required',
+            'bukti_diri' => 'required',
+            'keperluan' => 'required',
+            'tujuan' => 'required',
+            'berlaku_mulai' => 'required',
+            'keterangan' => 'required',
             'user_id' => 'required'
         ]);
 
         $pengajuanSurat = new PengajuanSurat();
+        $pengajuanSurat->jenis_surat = $request->jenis_surat; 
         $pengajuanSurat->nama = $request->nama; 
         $pengajuanSurat->nik = $request->nik; 
+        $pengajuanSurat->ttl = $request->ttl; 
         $pengajuanSurat->jenis_kelamin = $request->jenis_kelamin; 
-        $pengajuanSurat->status = $request->status; 
+        $pengajuanSurat->warganegara = $request->warganegara; 
+        $pengajuanSurat->agama = $request->agama; 
         $pengajuanSurat->pekerjaan = $request->pekerjaan; 
-        $pengajuanSurat->jenis_surat = $request->jenis_surat; 
+        $pengajuanSurat->alamat = $request->alamat; 
+        $pengajuanSurat->status = $request->status; 
+        $pengajuanSurat->bukti_diri = $request->bukti_diri; 
+        $pengajuanSurat->keperluan = $request->keperluan; 
+        $pengajuanSurat->tujuan = $request->tujuan; 
+        $pengajuanSurat->berlaku_mulai = $request->berlaku_mulai; 
+        $pengajuanSurat->keterangan = $request->keterangan; 
         $pengajuanSurat->user_id = $request->user_id;
         $pengajuanSurat->save();
         
@@ -55,8 +83,8 @@ class PengajuanSuratController extends Controller
 
     public function updatePengajuanSurat(Request $request, $id)
     {
-        $PengajuanSurat = PengajuanSurat::find($id);
-        if (!$PengajuanSurat) {
+        $pengajuanSurat = PengajuanSurat::find($id);
+        if (!$pengajuanSurat) {
             return response()->json([
                 'message' => 'PengajuanSurat not found',
                 'statusCode' => 404
@@ -64,22 +92,10 @@ class PengajuanSuratController extends Controller
         }
 
         $validateData = $request->validate([
-            'nama' => 'required', 
-            'nik' => 'required', 
-            'jenis_kelamin' => 'required', 
-            'status' => 'required', 
-            'pekerjaan' => 'required', 
-            'jenis_surat' => 'required', 
-            'user_id' => 'required'
+            'status_surat' => 'required',
         ]);
 
-        $pengajuanSurat->nama = $request->nama; 
-        $pengajuanSurat->nik = $request->nik; 
-        $pengajuanSurat->jenis_kelamin = $request->jenis_kelamin; 
-        $pengajuanSurat->status = $request->status; 
-        $pengajuanSurat->pekerjaan = $request->pekerjaan; 
-        $pengajuanSurat->jenis_surat = $request->jenis_surat; 
-        $pengajuanSurat->user_id = $request->user_id;
+        $pengajuanSurat->status_surat = $request->status_surat;
         $pengajuanSurat->save();
 
         return response()->json([
@@ -106,4 +122,3 @@ class PengajuanSuratController extends Controller
         ]);
     }
 }
-

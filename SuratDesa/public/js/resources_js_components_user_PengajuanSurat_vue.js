@@ -13,19 +13,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
+    var _form;
     return {
-      form: {
+      form: (_form = {
         nama: "",
-        nik: "",
-        jenis_kelamin: "",
-        status: "",
-        pekerjaan: "",
-        jenis_surat: "",
-        user_id: ""
-      },
+        jenis_surat: ""
+      }, _defineProperty(_form, "nama", ""), _defineProperty(_form, "nik", ""), _defineProperty(_form, "ttl", ""), _defineProperty(_form, "jenis_kelamin", ""), _defineProperty(_form, "warganegara", ""), _defineProperty(_form, "agama", ""), _defineProperty(_form, "pekerjaan", ""), _defineProperty(_form, "alamat", ""), _defineProperty(_form, "status", ""), _defineProperty(_form, "bukti_diri", ""), _defineProperty(_form, "keperluan", ""), _defineProperty(_form, "tujuan", ""), _defineProperty(_form, "berlaku_mulai", ""), _defineProperty(_form, "keterangan", ""), _defineProperty(_form, "status_surat", ""), _defineProperty(_form, "user_id", ""), _form),
       user_id: ''
     };
   },
@@ -34,11 +34,21 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
       var formData = new FormData();
       formData.append("nama", this.form.nama);
-      formData.append("nik", this.form.nik);
-      formData.append("jenis_kelamin", this.form.jenis_kelamin);
-      formData.append("status", this.form.status);
-      formData.append("pekerjaan", this.form.pekerjaan);
       formData.append("jenis_surat", this.form.jenis_surat);
+      formData.append("nik", this.form.nik);
+      formData.append("ttl", this.form.ttl);
+      formData.append("jenis_kelamin", this.form.jenis_kelamin);
+      formData.append("warganegara", this.form.warganegara);
+      formData.append("agama", this.form.agama);
+      formData.append("pekerjaan", this.form.pekerjaan);
+      formData.append("alamat", this.form.alamat);
+      formData.append("status", this.form.status);
+      formData.append("bukti_diri", this.form.bukti_diri);
+      formData.append("keperluan", this.form.keperluan);
+      formData.append("tujuan", this.form.tujuan);
+      formData.append("berlaku_mulai", this.form.berlaku_mulai);
+      formData.append("keterangan", this.form.keterangan);
+      formData.append("status_surat", this.form.status_surat);
       formData.append("user_id", this.user_id);
       axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/auth/pengajuan/", formData, {
         headers: {
@@ -55,25 +65,28 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/auth/me/", {
       headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token')
+        Authorization: "Bearer " + localStorage.getItem("token")
       }
-    }) // Gunakan properti 'id' sebagai bagian dari URL endpoint
-    .then(function (response) {
+    }).then(function (response) {
       _this2.user_id = response.data.id;
+      var role = response.data.role; // Get the user's role from the response
+      var token = localStorage.getItem("token");
+      var expires_in = localStorage.getItem("expires_in");
+      if (!token || !expires_in || new Date() > new Date(expires_in)) {
+        // If token is missing or expired, redirect to the home page
+        localStorage.removeItem("token");
+        localStorage.removeItem("expires_in");
+        _this2.$router.push("/");
+      } else if (role !== "user") {
+        // If the user doesn't have admin privileges, redirect to the unauthorized page
+        _this2.$router.push("/unauthorized");
+        // console.log(response.data.role)
+      } else {
+        console.log("success");
+      }
     })["catch"](function (error) {
       console.error(error);
     });
-    // const token = localStorage.getItem("token");
-    // const expires_in = localStorage.getItem("expires_in");
-    // // console.log(new Date());
-    // // console.log(new Date(expires_in));
-    // if (!token || !expires_in || new Date() > new Date(expires_in)) {
-    //   // Jika token tidak ada atau kadaluarsa, redirect ke halaman utama
-    //   localStorage.removeItem("token");
-    //   localStorage.removeItem("expires_in");
-    //   this.$router.push("/");
-    //   return;
-    // }
   }
 });
 
@@ -108,7 +121,7 @@ var render = function render() {
     }
   }, [_c("navbar"), _vm._v(" "), _c("h1", {
     staticClass: "text-center customMargin h3"
-  }, [_vm._v("Input Data Note")]), _vm._v(" "), _c("form", {
+  }, [_vm._v("Form Pengajuan Surat")]), _vm._v(" "), _c("form", {
     attrs: {
       enctype: "multipart/form-data"
     },
@@ -129,6 +142,50 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
+    staticClass: "col-sm-6"
+  }, [_c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "jenis_surat"
+    }
+  }, [_vm._v("Jenis Surat")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.jenis_surat,
+      expression: "form.jenis_surat"
+    }],
+    staticClass: "form-select",
+    attrs: {
+      "aria-label": "Default select example"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.form, "jenis_surat", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      disabled: "",
+      value: ""
+    }
+  }, [_vm._v("Pilih")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "SKTM"
+    }
+  }, [_vm._v("SKTM")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Pengantar SKCK"
+    }
+  }, [_vm._v("SKCK")])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-sm-6"
   }, [_c("div", {
     staticClass: "mb-3"
@@ -159,7 +216,9 @@ var render = function render() {
         _vm.$set(_vm.form, "nama", $event.target.value);
       }
     }
-  })])]), _vm._v(" "), _c("div", {
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
     staticClass: "col-sm-6"
   }, [_c("div", {
     staticClass: "mb-3"
@@ -190,6 +249,37 @@ var render = function render() {
         _vm.$set(_vm.form, "nik", $event.target.value);
       }
     }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-6"
+  }, [_c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "ttl"
+    }
+  }, [_vm._v("Tempat, Tanggal Lahir")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.ttl,
+      expression: "form.ttl"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "ttl",
+      placeholder: "masukkan tempat tanggal lahir"
+    },
+    domProps: {
+      value: _vm.form.ttl
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "ttl", $event.target.value);
+      }
+    }
   })])])]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
@@ -199,7 +289,7 @@ var render = function render() {
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
-      "for": "location"
+      "for": "jenis_kelamin"
     }
   }, [_vm._v("Jenis Kelamin")]), _vm._v(" "), _c("select", {
     directives: [{
@@ -225,7 +315,8 @@ var render = function render() {
     }
   }, [_c("option", {
     attrs: {
-      selected: ""
+      disabled: "",
+      value: ""
     }
   }, [_vm._v("Pilih")]), _vm._v(" "), _c("option", {
     attrs: {
@@ -236,6 +327,147 @@ var render = function render() {
       value: "perempuan"
     }
   }, [_vm._v("Perempuan")])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-6"
+  }, [_c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "warganegara"
+    }
+  }, [_vm._v("Warganegara")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.warganegara,
+      expression: "form.warganegara"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "warganegara",
+      placeholder: "masukkan warganegara"
+    },
+    domProps: {
+      value: _vm.form.warganegara
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "warganegara", $event.target.value);
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-sm-6"
+  }, [_c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "agama"
+    }
+  }, [_vm._v("Agama")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.agama,
+      expression: "form.agama"
+    }],
+    staticClass: "form-select",
+    attrs: {
+      "aria-label": "Default select example"
+    },
+    on: {
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.$set(_vm.form, "agama", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      }
+    }
+  }, [_c("option", {
+    attrs: {
+      disabled: "",
+      value: ""
+    }
+  }, [_vm._v("Pilih")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "islam"
+    }
+  }, [_vm._v("Islam")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "x"
+    }
+  }, [_vm._v("...")])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-6"
+  }, [_c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "pekerjaan"
+    }
+  }, [_vm._v("Pekerjaan")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.pekerjaan,
+      expression: "form.pekerjaan"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "pekerjaan",
+      placeholder: "masukkan pekerjaan"
+    },
+    domProps: {
+      value: _vm.form.pekerjaan
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "pekerjaan", $event.target.value);
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-sm-6"
+  }, [_c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "alamat"
+    }
+  }, [_vm._v("Alamat")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.alamat,
+      expression: "form.alamat"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "alamat",
+      placeholder: "masukkan alamat"
+    },
+    domProps: {
+      value: _vm.form.alamat
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "alamat", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
     staticClass: "col-sm-6"
   }, [_c("div", {
     staticClass: "mb-3"
@@ -268,7 +500,8 @@ var render = function render() {
     }
   }, [_c("option", {
     attrs: {
-      selected: ""
+      disabled: "",
+      value: ""
     }
   }, [_vm._v("Pilih")]), _vm._v(" "), _c("option", {
     attrs: {
@@ -291,28 +524,28 @@ var render = function render() {
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
-      "for": "pekerjaan"
+      "for": "bukti_diri"
     }
-  }, [_vm._v("Pekerjaan")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Bukti Diri")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.form.pekerjaan,
-      expression: "form.pekerjaan"
+      value: _vm.form.bukti_diri,
+      expression: "form.bukti_diri"
     }],
     staticClass: "form-control",
     attrs: {
       type: "text",
-      id: "pekerjaan",
-      placeholder: "masukkan pekerjaan"
+      id: "bukti_diri",
+      placeholder: "masukkan bukti diri"
     },
     domProps: {
-      value: _vm.form.pekerjaan
+      value: _vm.form.bukti_diri
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.$set(_vm.form, "pekerjaan", $event.target.value);
+        _vm.$set(_vm.form, "bukti_diri", $event.target.value);
       }
     }
   })])]), _vm._v(" "), _c("div", {
@@ -322,44 +555,128 @@ var render = function render() {
   }, [_c("label", {
     staticClass: "form-label",
     attrs: {
-      "for": "jenis-surat"
+      "for": "keperluan"
     }
-  }, [_vm._v("Jenis Surat")]), _vm._v(" "), _c("select", {
+  }, [_vm._v("Keperluan")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.form.jenis_surat,
-      expression: "form.jenis_surat"
+      value: _vm.form.keperluan,
+      expression: "form.keperluan"
     }],
-    staticClass: "form-select",
+    staticClass: "form-control",
     attrs: {
-      "aria-label": "Default select example"
+      type: "text",
+      id: "keperluan",
+      placeholder: "masukkan keperluan"
+    },
+    domProps: {
+      value: _vm.form.keperluan
     },
     on: {
-      change: function change($event) {
-        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
-          return o.selected;
-        }).map(function (o) {
-          var val = "_value" in o ? o._value : o.value;
-          return val;
-        });
-        _vm.$set(_vm.form, "jenis_surat", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "keperluan", $event.target.value);
       }
     }
-  }, [_c("option", {
-    attrs: {
-      selected: ""
-    }
-  }, [_vm._v("Pilih")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "sktm"
-    }
-  }, [_vm._v("SKTM")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "skck"
-    }
-  }, [_vm._v("SKCK")])])])])]), _vm._v(" "), _c("div", {
+  })])])]), _vm._v(" "), _c("div", {
     staticClass: "row"
+  }, [_c("div", {
+    staticClass: "col-sm-6"
+  }, [_c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "tujuan"
+    }
+  }, [_vm._v("Tujuan")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.tujuan,
+      expression: "form.tujuan"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "tujuan",
+      placeholder: "masukkan tujuan"
+    },
+    domProps: {
+      value: _vm.form.tujuan
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "tujuan", $event.target.value);
+      }
+    }
+  })])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-6"
+  }, [_c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "berlaku_mulai"
+    }
+  }, [_vm._v("Berlaku Mulai")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.berlaku_mulai,
+      expression: "form.berlaku_mulai"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "date",
+      id: "berlaku_mulai",
+      placeholder: "masukkan berlaku_mulai"
+    },
+    domProps: {
+      value: _vm.form.berlaku_mulai
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "berlaku_mulai", $event.target.value);
+      }
+    }
+  })])])]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "form-floating"
+  }, [_c("textarea", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.form.keterangan,
+      expression: "form.keterangan"
+    }],
+    staticClass: "form-control",
+    staticStyle: {
+      height: "100px"
+    },
+    attrs: {
+      placeholder: "masukkan keterangan tambahan",
+      id: "keterangan"
+    },
+    domProps: {
+      value: _vm.form.keterangan
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.$set(_vm.form, "keterangan", $event.target.value);
+      }
+    }
+  }), _vm._v(" "), _c("label", {
+    attrs: {
+      "for": "keterangan"
+    }
+  }, [_vm._v("Keterangan Tambahan")])])]), _vm._v(" "), _c("div", {
+    staticClass: "row mt-3"
   }, [_c("div", {
     staticClass: "col-sm-6"
   }, [_c("router-link", {
@@ -384,7 +701,7 @@ var staticRenderFns = [function () {
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("\n                    Selanjutnya\n                  ")])]);
+  }, [_vm._v("\n                    Kirim\n                  ")])]);
 }];
 render._withStripped = true;
 

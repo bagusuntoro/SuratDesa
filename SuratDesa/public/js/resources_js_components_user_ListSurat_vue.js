@@ -21,10 +21,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      note: []
+      note: [],
+      user_id: ''
     };
   },
   methods: {
+    getSuratUrl: function getSuratUrl(fileName) {
+      return "/storage/".concat(fileName); // Sesuaikan dengan folder dan path file PDF Anda
+    },
     detail: function detail(id) {
       this.$router.push({
         name: 'user-detail-note',
@@ -33,7 +37,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }
       });
     },
-    fetchNote: function fetchNote() {
+    fetchNote: function fetchNote(id) {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var response;
@@ -42,7 +46,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/auth/pengajuan", {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("api/auth/pengajuan-user/".concat(id), {
                 headers: {
                   Authorization: 'Bearer ' + localStorage.getItem('token')
                 }
@@ -62,21 +66,68 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee, null, [[0, 7]]);
       }))();
+    },
+    fetchUser: function fetchUser() {
+      var _this2 = this;
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var response;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              _context2.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("api/auth/me/", {
+                headers: {
+                  Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+              });
+            case 3:
+              response = _context2.sent;
+              _this2.user_id = response.data.id;
+              console.log(_this2.user_id);
+              _this2.fetchNote(_this2.user_id);
+              _context2.next = 12;
+              break;
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](0);
+              console.error(_context2.t0);
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, null, [[0, 9]]);
+      }))();
     }
   },
   created: function created() {
-    // const token = localStorage.getItem("token");
-    // const expires_in = localStorage.getItem("expires_in");
-    // // console.log(new Date());
-    // // console.log(new Date(expires_in));
-    // if (!token || !expires_in || new Date() > new Date(expires_in)) {
-    //   // Jika token tidak ada atau kadaluarsa, redirect ke halaman utama
-    //   localStorage.removeItem("token");
-    //   localStorage.removeItem("expires_in");
-    //   this.$router.push("/");
-    //   return;
-    // }
-    this.fetchNote();
+    var _this3 = this;
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/auth/me/", {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token")
+      }
+    }).then(function (response) {
+      var role = response.data.role; // Get the user's role from the response
+
+      var token = localStorage.getItem("token");
+      var expires_in = localStorage.getItem("expires_in");
+      if (!token || !expires_in || new Date() > new Date(expires_in)) {
+        // If token is missing or expired, redirect to the home page
+        localStorage.removeItem("token");
+        localStorage.removeItem("expires_in");
+        _this3.$router.push("/");
+      } else if (role !== "user") {
+        // If the user doesn't have admin privileges, redirect to the unauthorized page
+        _this3.$router.push("/unauthorized");
+        // console.log(response.data.role)
+      } else {
+        console.log('role: ', role);
+        console.log("success");
+      }
+    })["catch"](function (error) {
+      console.error(error);
+    });
+    this.fetchUser();
   }
 });
 
@@ -124,7 +175,7 @@ var render = function render() {
   }, [_c("router-link", {
     staticClass: "btn btn-primary me-2",
     attrs: {
-      to: "user-input-note"
+      to: "/pengajuan-surat"
     }
   }, [_c("i", {
     staticClass: "bi bi-plus"
@@ -141,9 +192,16 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(index + 1))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.nama))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.nik))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.jenis_surat))]), _vm._v(" "), _c("td", [item.status_surat === "proses" ? _c("span", {
       staticClass: "btn btn-warning"
-    }, [_vm._v("\n                    " + _vm._s(item.status_surat) + "\n                  ")]) : _vm._e(), _vm._v(" "), item.status_surat === "selesai" ? _c("span", {
+    }, [_vm._v("\n                    " + _vm._s(item.status_surat) + "\n                  ")]) : _vm._e(), _vm._v(" "), item.status_surat === "selesai" ? _c("a", {
+      attrs: {
+        href: _vm.getSuratUrl(item.surat.surat),
+        download: ""
+      }
+    }, [_c("span", {
       staticClass: "btn btn-primary"
-    }, [_vm._v("\n                    " + _vm._s(item.status_surat) + "\n                  ")]) : _vm._e()]), _vm._v(" "), _c("td", [_c("button", {
+    }, [_vm._v("\n                      " + _vm._s(item.status_surat) + " "), _c("i", {
+      staticClass: "fas fa-download"
+    })])]) : _vm._e()]), _vm._v(" "), _c("td", [_c("button", {
       staticClass: "btn btn-warning",
       staticStyle: {
         "float": "right"

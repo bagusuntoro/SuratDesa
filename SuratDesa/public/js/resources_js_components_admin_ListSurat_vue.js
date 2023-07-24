@@ -45,7 +45,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/pengajuan");
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/auth/pengajuan", {
+                headers: {
+                  Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+              });
             case 3:
               response = _context.sent;
               _this.note = response.data.data;
@@ -121,6 +125,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   created: function created() {
+    var _this3 = this;
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/auth/me/", {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token")
+      }
+    }).then(function (response) {
+      var role = response.data.role; // Get the user's role from the response
+
+      var token = localStorage.getItem("token");
+      var expires_in = localStorage.getItem("expires_in");
+      if (!token || !expires_in || new Date() > new Date(expires_in)) {
+        // If token is missing or expired, redirect to the home page
+        localStorage.removeItem("token");
+        localStorage.removeItem("expires_in");
+        _this3.$router.push("/");
+      } else if (role !== "admin") {
+        // If the user doesn't have admin privileges, redirect to the unauthorized page
+        _this3.$router.push("/unauthorized");
+        // console.log(response.data.role)
+      } else {
+        console.log('role: ', role);
+        console.log("success");
+      }
+    })["catch"](function (error) {
+      console.error(error);
+    });
     this.fetchNote();
   }
 });
@@ -145,7 +175,7 @@ var render = function render() {
     attrs: {
       id: "wrapper"
     }
-  }, [_c("sidebar"), _vm._v(" "), _c("div", {
+  }, [_c("sidebar-admin"), _vm._v(" "), _c("div", {
     staticClass: "d-flex flex-column",
     attrs: {
       id: "content-wrapper"
@@ -162,22 +192,9 @@ var render = function render() {
     staticClass: "col-sm-1"
   }), _vm._v(" "), _c("div", {
     staticClass: "col-sm-10"
-  }, [_c("div", {
-    staticClass: "row mt-5"
-  }, [_c("div", {
-    staticClass: "col-sm-3"
-  }, [_c("router-link", {
-    staticClass: "btn btn-primary me-2",
-    attrs: {
-      to: "user-input-note"
-    }
-  }, [_c("i", {
-    staticClass: "bi bi-plus"
-  })])], 1), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-9"
-  })]), _vm._v(" "), _c("table", {
+  }, [_vm._m(0), _vm._v(" "), _c("table", {
     staticClass: "table table-striped mt-2"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.note, function (item, index) {
+  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.note, function (item, index) {
     return _c("tr", {
       key: item.id
     }, [_c("th", {
@@ -190,20 +207,20 @@ var render = function render() {
       staticClass: "btn btn-primary"
     }, [_vm._v("\n                    " + _vm._s(item.status_surat) + "\n                  ")]) : _vm._e()]), _vm._v(" "), _c("td", [_c("div", {
       staticClass: "btn-group"
-    }, [_c("button", {
+    }, [item.status_surat === "proses" ? _c("button", {
       staticClass: "btn btn-primary dropdown-toggle",
       attrs: {
         type: "button",
         "data-bs-toggle": "dropdown",
         "aria-expanded": "false"
       }
-    }, [_vm._v("\n                      Cetak\n                    ")]), _vm._v(" "), _c("ul", {
+    }, [_vm._v("\n                      Cetak\n                    ")]) : _vm._e(), _vm._v(" "), _c("ul", {
       staticClass: "dropdown-menu"
     }, [_c("li", [_c("router-link", {
       staticClass: "dropdown-item",
       attrs: {
         to: {
-          name: "pdf",
+          name: "skck",
           params: {
             id: item.id
           }
@@ -241,6 +258,16 @@ var render = function render() {
   })])], 1), _vm._v(" "), _c("footer")])], 1);
 };
 var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "row mt-5"
+  }, [_c("div", {
+    staticClass: "col-sm-3"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-9"
+  })]);
+}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("thead", [_c("tr", [_c("th", {

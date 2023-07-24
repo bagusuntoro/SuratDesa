@@ -9,7 +9,7 @@
         <navbar />
 
         <!-- Begin Page Content -->
-        <h1 class="text-center customMargin h3">Input Data Note</h1>
+        <h1 class="text-center customMargin h3">Form Pengajuan Surat</h1>
         <form @submit.prevent="handleSubmit" enctype="multipart/form-data">
           <div class="headerNote">
             <div class="row">
@@ -17,6 +17,18 @@
               <div class="col-sm-10">
                 <div class="row">
                   <div class="col-sm-6">
+                    <!-- jenis surat -->
+                    <div class="mb-3">
+                      <label for="jenis_surat" class="form-label">Jenis Surat</label>
+                      <select class="form-select" aria-label="Default select example" v-model="form.jenis_surat">
+                        <option disabled value="">Pilih</option>
+                        <option value="SKTM">SKTM</option>
+                        <option value="Pengantar SKCK">SKCK</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <!-- nama -->
                     <div class="mb-3">
                       <label for="nama" class="form-label">Nama</label>
                       <input
@@ -28,7 +40,11 @@
                       />
                     </div>
                   </div>
+                </div>
+
+                <div class="row">
                   <div class="col-sm-6">
+                    <!-- nik -->
                     <div class="mb-3">
                       <label for="nik" class="form-label">NIK</label>
                       <input
@@ -40,34 +56,62 @@
                       />
                     </div>
                   </div>
+                  <div class="col-sm-6">
+                    <!-- ttl -->
+                    <div class="mb-3">
+                      <label for="ttl" class="form-label">Tempat, Tanggal Lahir</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="ttl"
+                        placeholder="masukkan tempat tanggal lahir"
+                        v-model="form.ttl"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <div class="row">
                   <div class="col-sm-6">
+                    <!-- jenis kelamin -->
                     <div class="mb-3">
-                      <label for="location" class="form-label">Jenis Kelamin</label>
+                      <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
                       <select class="form-select" aria-label="Default select example" v-model="form.jenis_kelamin">
-                        <option selected>Pilih</option>
+                        <option disabled value="">Pilih</option>
                         <option value="laki">Laki-laki</option>
                         <option value="perempuan">Perempuan</option>
                       </select>
                     </div>
                   </div>
                   <div class="col-sm-6">
+                    <!-- negara -->
                     <div class="mb-3">
-                      <label for="status" class="form-label">Status</label>
-                      <select class="form-select" aria-label="Default select example" v-model="form.status">
-                        <option selected>Pilih</option>
-                        <option value="menikah">Menikah</option>
-                        <option value="jada-duda">Janda/Duda</option>
-                        <option value="pelajar">Pelajar/Mahasiswa</option>
-                      </select>
+                      <label for="warganegara" class="form-label">Warganegara</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="warganegara"
+                        placeholder="masukkan warganegara"
+                        v-model="form.warganegara"
+                      />
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-sm-6">
+                    <!-- agama -->
+                    <div class="mb-3">
+                      <label for="agama" class="form-label">Agama</label>
+                      <select class="form-select" aria-label="Default select example" v-model="form.agama">
+                        <option disabled value="">Pilih</option>
+                        <option value="islam">Islam</option>
+                        <option value="x">...</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <!-- pekerjaan -->
                     <div class="mb-3">
                       <label for="pekerjaan" class="form-label"
                         >Pekerjaan</label
@@ -81,19 +125,100 @@
                       />
                     </div>
                   </div>
+                </div>
+
+                <div class="row">
                   <div class="col-sm-6">
+                    <!-- alamat -->
                     <div class="mb-3">
-                      <label for="jenis-surat" class="form-label">Jenis Surat</label>
-                      <select class="form-select" aria-label="Default select example" v-model="form.jenis_surat">
-                        <option selected>Pilih</option>
-                        <option value="sktm">SKTM</option>
-                        <option value="skck">SKCK</option>
+                      <label for="alamat" class="form-label">Alamat</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="alamat"
+                        placeholder="masukkan alamat"
+                        v-model="form.alamat"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <!-- status -->
+                    <div class="mb-3">
+                      <label for="status" class="form-label">Status</label>
+                      <select class="form-select" aria-label="Default select example" v-model="form.status">
+                        <option disabled value="">Pilih</option>
+                        <option value="menikah">Menikah</option>
+                        <option value="jada-duda">Janda/Duda</option>
+                        <option value="pelajar">Pelajar/Mahasiswa</option>
                       </select>
                     </div>
                   </div>
                 </div>
-
                 <div class="row">
+                  <div class="col-sm-6">
+                    <!-- bukti diri -->
+                    <div class="mb-3">
+                      <label for="bukti_diri" class="form-label">Bukti Diri</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="bukti_diri"
+                        placeholder="masukkan bukti diri"
+                        v-model="form.bukti_diri"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <!-- keperluan -->
+                    <div class="mb-3">
+                      <label for="keperluan" class="form-label">Keperluan</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="keperluan"
+                        placeholder="masukkan keperluan"
+                        v-model="form.keperluan"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- tujuan -->
+                    <div class="mb-3">
+                      <label for="tujuan" class="form-label">Tujuan</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="tujuan"
+                        placeholder="masukkan tujuan"
+                        v-model="form.tujuan"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                     <!--berlaku mulai-->
+                    <div class="mb-3">
+                      <label for="berlaku_mulai" class="form-label">Berlaku Mulai</label>
+                      <input
+                        type="date"
+                        class="form-control"
+                        id="berlaku_mulai"
+                        placeholder="masukkan berlaku_mulai"
+                        v-model="form.berlaku_mulai"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <!-- keterangan -->
+                  <div class="form-floating">
+                    <textarea v-model="form.keterangan" class="form-control" placeholder="masukkan keterangan tambahan" id="keterangan" style="height: 100px"></textarea>
+                    <label for="keterangan">Keterangan Tambahan</label>
+                  </div>
+                </div>
+
+                <div class="row mt-3">
                   <div class="col-sm-6">
                     <router-link
                       to="/user-note"
@@ -103,7 +228,7 @@
                   </div>
                   <div class="col-sm-6">
                     <button type="submit" class="btn btn-primary" style="float:right;">
-                      Selanjutnya
+                      Kirim
                     </button>
                   </div>
                 </div>
@@ -132,12 +257,23 @@ export default {
     return {
       form: {
         nama: "", 
-        nik: "", 
-        jenis_kelamin: "", 
-        status: "", 
-        pekerjaan: "", 
-        jenis_surat: "", 
-        user_id: "",
+        jenis_surat: "",
+        nama: "",
+        nik: "",
+        ttl: "",
+        jenis_kelamin: "",
+        warganegara: "",
+        agama: "",
+        pekerjaan: "",
+        alamat: "",
+        status: "",
+        bukti_diri: "",
+        keperluan: "",
+        tujuan: "",
+        berlaku_mulai: "",
+        keterangan: "",
+        status_surat: "",
+        user_id: ""
       },
       user_id:''
     };
@@ -146,11 +282,21 @@ export default {
     handleSubmit() {
       let formData = new FormData();
       formData.append("nama", this.form.nama);
-      formData.append("nik", this.form.nik);
-      formData.append("jenis_kelamin", this.form.jenis_kelamin);
-      formData.append("status", this.form.status);
-      formData.append("pekerjaan", this.form.pekerjaan);
       formData.append("jenis_surat", this.form.jenis_surat);
+      formData.append("nik", this.form.nik);
+      formData.append("ttl", this.form.ttl);
+      formData.append("jenis_kelamin", this.form.jenis_kelamin);
+      formData.append("warganegara", this.form.warganegara);
+      formData.append("agama", this.form.agama);
+      formData.append("pekerjaan", this.form.pekerjaan);
+      formData.append("alamat", this.form.alamat);
+      formData.append("status", this.form.status);
+      formData.append("bukti_diri", this.form.bukti_diri);
+      formData.append("keperluan", this.form.keperluan);
+      formData.append("tujuan", this.form.tujuan);
+      formData.append("berlaku_mulai", this.form.berlaku_mulai);
+      formData.append("keterangan", this.form.keterangan);
+      formData.append("status_surat", this.form.status_surat);
       formData.append("user_id", this.user_id);
 
       axios.post("http://localhost:8000/api/auth/pengajuan/", formData,{
@@ -168,28 +314,32 @@ export default {
   },
   created() {
     axios
-      .get(`http://localhost:8000/api/auth/me/`,{
-          headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('token')
-          }
-        }) // Gunakan properti 'id' sebagai bagian dari URL endpoint
+      .get(`http://localhost:8000/api/auth/me/`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
       .then((response) => {
         this.user_id = response.data.id;
+        const role = response.data.role; // Get the user's role from the response
+        const token = localStorage.getItem("token");
+        const expires_in = localStorage.getItem("expires_in");
+        if (!token || !expires_in || new Date() > new Date(expires_in)) {
+          // If token is missing or expired, redirect to the home page
+          localStorage.removeItem("token");
+          localStorage.removeItem("expires_in");
+          this.$router.push("/");
+        } else if (role !== "user") {
+          // If the user doesn't have admin privileges, redirect to the unauthorized page
+          this.$router.push("/unauthorized");
+          // console.log(response.data.role)
+        } else {
+          console.log("success");
+        }
       })
       .catch((error) => {
         console.error(error);
       });
-    // const token = localStorage.getItem("token");
-    // const expires_in = localStorage.getItem("expires_in");
-    // // console.log(new Date());
-    // // console.log(new Date(expires_in));
-    // if (!token || !expires_in || new Date() > new Date(expires_in)) {
-    //   // Jika token tidak ada atau kadaluarsa, redirect ke halaman utama
-    //   localStorage.removeItem("token");
-    //   localStorage.removeItem("expires_in");
-    //   this.$router.push("/");
-    //   return;
-    // }
   },
 };
 </script>

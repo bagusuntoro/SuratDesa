@@ -1,10 +1,18 @@
-import Warga from './components/admin/Warga.vue'
-
 export const routes = [
     {
-        path: "/pdf",
-        name: 'pdf',
-        component: () => import('./components/admin/PDF.vue')
+        path: "/unauthorized",
+        name: 'unauthorized',
+        component: () => import('./components/Unauthorized.vue')
+    },
+    {
+        path: "/skck",
+        name: 'skck',
+        component: () => import('./components/admin/SKCK.vue')
+    },
+    {
+        path: "/pengantar",
+        name: 'pengantar',
+        component: () => import('./components/admin/Pengantar.vue')
     },
     {
         path: "/",
@@ -21,24 +29,26 @@ export const routes = [
         name: 'lupa-password',
         component: () => import('./components/LupaPassword.vue')
     },
+
+    // admin
     {
-        path: "/admin-warga",
-        name: 'admin-warga',
-        component: Warga
+        path: '/admin-dashboard',
+        name: 'admin-dashboard',
+        component: () => import('./components/admin/Dashboard.vue')
     },
     {
         path: '/admin-surat',
         name: 'admin-surat',
         component: () => import('./components/admin/ListSurat.vue')
     },
-    {
-        path: '/admin-skck',
-        name: 'admin-skck',
-        component: () => import('./components/admin/Template.vue')
-    },
 
 
     // user
+    {
+        path: '/user-dashboard',
+        name: 'user-dashboard',
+        component: () => import('./components/user/Dashboard.vue')
+    },
     {
         path: '/pengajuan-surat',
         name: 'pengajuan-surat',
@@ -49,11 +59,4 @@ export const routes = [
         name: 'user-surat',
         component: () => import('./components/user/ListSurat.vue')
     },
-
-
-    {
-        path: '/template',
-        name: 'template',
-        component: () => import('./components/admin/Template.vue')
-    }
 ]
