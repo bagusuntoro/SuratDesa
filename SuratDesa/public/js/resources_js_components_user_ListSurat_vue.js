@@ -126,6 +126,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     })["catch"](function (error) {
       console.error(error);
+      _this3.$router.push("/");
     });
     this.fetchUser();
   }
@@ -168,22 +169,9 @@ var render = function render() {
     staticClass: "col-sm-1"
   }), _vm._v(" "), _c("div", {
     staticClass: "col-sm-10"
-  }, [_c("div", {
-    staticClass: "row mt-5"
-  }, [_c("div", {
-    staticClass: "col-sm-3"
-  }, [_c("router-link", {
-    staticClass: "btn btn-primary me-2",
-    attrs: {
-      to: "/pengajuan-surat"
-    }
-  }, [_c("i", {
-    staticClass: "bi bi-plus"
-  })])], 1), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-9"
-  })]), _vm._v(" "), _c("table", {
+  }, [_vm._m(0), _vm._v(" "), _c("table", {
     staticClass: "table table-striped mt-2"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.note, function (item, index) {
+  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.note, function (item, index) {
     return _c("tr", {
       key: item.id
     }, [_c("th", {
@@ -222,6 +210,16 @@ var render = function render() {
   })])], 1), _vm._v(" "), _c("footer")])], 1);
 };
 var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "row mt-5"
+  }, [_c("div", {
+    staticClass: "col-sm-3"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-9"
+  })]);
+}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("thead", [_c("tr", [_c("th", {

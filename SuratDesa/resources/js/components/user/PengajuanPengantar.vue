@@ -9,7 +9,7 @@
         <navbar />
 
         <!-- Begin Page Content -->
-        <h1 class="text-center customMargin h3">Form Pengajuan Surat</h1>
+        <h1 class="text-center customMargin h3">Form Pengajuan Surat Pengnatar</h1>
         <form @submit.prevent="handleSubmit" enctype="multipart/form-data">
           <div class="headerNote">
             <div class="row">
@@ -339,6 +339,7 @@ export default {
       })
       .catch((error) => {
         console.error(error);
+        this.$router.push("/");
       });
   },
 };

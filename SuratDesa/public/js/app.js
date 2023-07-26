@@ -5477,7 +5477,30 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "bi bi-journal-text"
-  }), _vm._v(" "), _c("span", [_vm._v("Surat")])])], 1), _vm._v(" "), _c("hr", {
+  }), _vm._v(" "), _c("span", [_vm._v("List Surat")])])], 1), _vm._v(" "), _c("li", {
+    staticClass: "nav-item"
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "collapse",
+    attrs: {
+      id: "collapseTwo",
+      "aria-labelledby": "headingTwo",
+      "data-parent": "#accordionSidebar"
+    }
+  }, [_c("div", {
+    staticClass: "bg-white py-2 collapse-inner rounded"
+  }, [_c("h6", {
+    staticClass: "collapse-header"
+  }, [_vm._v("Menu surat")]), _vm._v(" "), _c("router-link", {
+    staticClass: "collapse-item",
+    attrs: {
+      to: "/user-pengantar"
+    }
+  }, [_c("span", [_vm._v("Pengantar")])]), _vm._v(" "), _c("router-link", {
+    staticClass: "collapse-item",
+    attrs: {
+      to: "/user-skck"
+    }
+  }, [_c("span", [_vm._v("SKCK")])])], 1)])]), _vm._v(" "), _c("hr", {
     staticClass: "sidebar-divider d-none d-md-block"
   }), _vm._v(" "), _c("div", {
     staticClass: "text-center d-none d-md-inline"
@@ -5510,6 +5533,21 @@ var staticRenderFns = [function () {
   })]), _vm._v(" "), _c("div", {
     staticClass: "sidebar-brand-text mx-3"
   }, [_vm._v("Pengajuan "), _c("sup", [_vm._v("Surat")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("a", {
+    staticClass: "nav-link collapsed",
+    attrs: {
+      href: "#",
+      "data-toggle": "collapse",
+      "data-target": "#collapseTwo",
+      "aria-expanded": "true",
+      "aria-controls": "collapseTwo"
+    }
+  }, [_c("i", {
+    staticClass: "bi bi-plus"
+  }), _vm._v(" "), _c("span", [_vm._v("Surat")])]);
 }];
 render._withStripped = true;
 
@@ -5666,16 +5704,22 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_components_user_Dashboard_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/user/Dashboard.vue */ "./resources/js/components/user/Dashboard.vue"));
   }
 }, {
-  path: '/pengajuan-surat',
-  name: 'pengajuan-surat',
-  component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_components_user_PengajuanSurat_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/user/PengajuanSurat.vue */ "./resources/js/components/user/PengajuanSurat.vue"));
-  }
-}, {
   path: '/user-surat',
   name: 'user-surat',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_components_user_ListSurat_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/user/ListSurat.vue */ "./resources/js/components/user/ListSurat.vue"));
+  }
+}, {
+  path: '/user-skck',
+  name: 'user-skck',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_user_PengajuanSKCK_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/user/PengajuanSKCK.vue */ "./resources/js/components/user/PengajuanSKCK.vue"));
+  }
+}, {
+  path: '/user-pengantar',
+  name: 'user-pengantar',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_components_user_PengajuanPengantar_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/user/PengajuanPengantar.vue */ "./resources/js/components/user/PengajuanPengantar.vue"));
   }
 }];
 
@@ -47165,7 +47209,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Unauthorized_vue":1,"resources_js_components_admin_SKCK_vue":1,"resources_js_components_admin_Pengantar_vue":1,"resources_js_components_Login_vue":1,"resources_js_components_Register_vue":1,"resources_js_components_LupaPassword_vue":1,"resources_js_components_admin_Dashboard_vue":1,"resources_js_components_admin_ListSurat_vue":1,"resources_js_components_user_Dashboard_vue":1,"resources_js_components_user_PengajuanSurat_vue":1,"resources_js_components_user_ListSurat_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Unauthorized_vue":1,"resources_js_components_admin_SKCK_vue":1,"resources_js_components_admin_Pengantar_vue":1,"resources_js_components_Login_vue":1,"resources_js_components_Register_vue":1,"resources_js_components_LupaPassword_vue":1,"resources_js_components_admin_Dashboard_vue":1,"resources_js_components_admin_ListSurat_vue":1,"resources_js_components_user_Dashboard_vue":1,"resources_js_components_user_ListSurat_vue":1,"resources_js_components_user_PengajuanSKCK_vue":1,"resources_js_components_user_PengajuanPengantar_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

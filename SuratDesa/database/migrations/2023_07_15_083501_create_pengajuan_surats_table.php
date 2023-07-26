@@ -32,9 +32,9 @@ class CreatePengajuanSuratsTable extends Migration
             $table->string('keterangan');
             $table->enum('status_surat',['proses','selesai'])->default('proses');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('surat_id');
+            // $table->unsignedBigInteger('surat_id');
             $table->timestamps();
-            $table->foreign('surat_id')->references('id')->on('surats');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

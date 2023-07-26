@@ -44,6 +44,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     })["catch"](function (error) {
       console.error(error);
+      _this.$router.push("/");
     });
   }
 });

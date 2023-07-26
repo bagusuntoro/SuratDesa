@@ -204,12 +204,13 @@ export default {
         } else {
           console.log('role: ',role)
           console.log("success");
+          this.fetchNote();
         }
       })
       .catch((error) => {
         console.error(error);
+        this.$router.push("/");
       });
-    this.fetchNote();
   },
 };
 </script>

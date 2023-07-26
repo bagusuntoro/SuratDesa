@@ -160,32 +160,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   created: function created() {
-    var _this4 = this;
-    axios.get("http://localhost:8000/api/auth/me/", {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token")
-      }
-    }).then(function (response) {
-      var role = response.data.role; // Get the user's role from the response
-      _this4.user_id = response.data.id;
-      var token = localStorage.getItem("token");
-      var expires_in = localStorage.getItem("expires_in");
-      if (!token || !expires_in || new Date() > new Date(expires_in)) {
-        // If token is missing or expired, redirect to the home page
-        localStorage.removeItem("token");
-        localStorage.removeItem("expires_in");
-        _this4.$router.push("/");
-      } else if (role !== "admin") {
-        // If the admin doesn't have admin privileges, redirect to the unauthorized page
-        _this4.$router.push("/unauthorized");
-        // console.log(response.data.role)
-      } else {
-        console.log('role: ', role);
-        console.log("success");
-      }
-    })["catch"](function (error) {
-      console.error(error);
-    });
+    // axios
+    //   .get(`http://localhost:8000/api/auth/me/`, {
+    //     headers: {
+    //       Authorization: "Bearer " + localStorage.getItem("token"),
+    //     },
+    //   })
+    //   .then((response) => {
+    //     const role = response.data.role; // Get the user's role from the response
+    //     this.user_id = response.data.id;
+
+    //     const token = localStorage.getItem("token");
+    //     const expires_in = localStorage.getItem("expires_in");
+    //     if (!token || !expires_in || new Date() > new Date(expires_in)) {
+    //       // If token is missing or expired, redirect to the home page
+    //       localStorage.removeItem("token");
+    //       localStorage.removeItem("expires_in");
+    //       this.$router.push("/");
+    //     } else if (role !== "admin") {
+    //       // If the admin doesn't have admin privileges, redirect to the unauthorized page
+    //       this.$router.push("/unauthorized");
+    //       // console.log(response.data.role)
+    //     } else {
+    //       console.log('role: ',role)
+    //       console.log("success");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
 
     // axios
     //   .get(`http://localhost:8000/api/auth/me/`, {

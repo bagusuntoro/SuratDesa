@@ -185,6 +185,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     })["catch"](function (error) {
       console.error(error);
+      _this4.$router.push("/");
     });
 
     // axios

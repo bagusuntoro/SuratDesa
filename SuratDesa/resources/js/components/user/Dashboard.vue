@@ -183,6 +183,7 @@ export default {
       })
       .catch((error) => {
         console.error(error);
+        this.$router.push("/");
       });
   },
 };

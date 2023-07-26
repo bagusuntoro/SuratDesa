@@ -147,11 +147,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } else {
         console.log('role: ', role);
         console.log("success");
+        _this3.fetchNote();
       }
     })["catch"](function (error) {
       console.error(error);
+      _this3.$router.push("/");
     });
-    this.fetchNote();
   }
 });
 

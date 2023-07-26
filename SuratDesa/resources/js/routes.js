@@ -50,13 +50,18 @@ export const routes = [
         component: () => import('./components/user/Dashboard.vue')
     },
     {
-        path: '/pengajuan-surat',
-        name: 'pengajuan-surat',
-        component: () => import('./components/user/PengajuanSurat.vue')
-    },
-    {
         path: '/user-surat',
         name: 'user-surat',
         component: () => import('./components/user/ListSurat.vue')
+    },
+    {
+        path: '/user-skck',
+        name: 'user-skck',
+        component: () => import('./components/user/PengajuanSKCK.vue')
+    },
+    {
+        path: '/user-pengantar',
+        name: 'user-pengantar',
+        component: () => import('./components/user/PengajuanPengantar.vue')
     },
 ]
