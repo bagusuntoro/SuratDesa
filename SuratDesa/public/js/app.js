@@ -5693,7 +5693,7 @@ var routes = [{
   path: '/admin-surat',
   name: 'admin-surat',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_components_admin_ListSurat_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/admin/ListSurat.vue */ "./resources/js/components/admin/ListSurat.vue"));
+    return Promise.resolve().then(function webpackMissingModule() { var e = new Error("Cannot find module './components/admin/ListSurat.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; });
   }
 },
 // user
@@ -47209,7 +47209,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Unauthorized_vue":1,"resources_js_components_admin_SKCK_vue":1,"resources_js_components_admin_Pengantar_vue":1,"resources_js_components_Login_vue":1,"resources_js_components_Register_vue":1,"resources_js_components_LupaPassword_vue":1,"resources_js_components_admin_Dashboard_vue":1,"resources_js_components_admin_ListSurat_vue":1,"resources_js_components_user_Dashboard_vue":1,"resources_js_components_user_ListSurat_vue":1,"resources_js_components_user_PengajuanSKCK_vue":1,"resources_js_components_user_PengajuanPengantar_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Unauthorized_vue":1,"resources_js_components_admin_SKCK_vue":1,"resources_js_components_admin_Pengantar_vue":1,"resources_js_components_Login_vue":1,"resources_js_components_Register_vue":1,"resources_js_components_LupaPassword_vue":1,"resources_js_components_admin_Dashboard_vue":1,"resources_js_components_user_Dashboard_vue":1,"resources_js_components_user_ListSurat_vue":1,"resources_js_components_user_PengajuanSKCK_vue":1,"resources_js_components_user_PengajuanPengantar_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
