@@ -1,0 +1,342 @@
+<template>
+  <div id="wrapper">
+    <sidebar-admin />
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <!-- Main Content -->
+      <div id="content">
+        <navbar />
+
+        <!-- Begin Page Content -->
+        <div id="app" ref="document">
+          <button @click="exportToPDF">Export to PDF</button>
+          <div id="element-to-convert">
+            <div class="text-black">
+              <div class="row mt-5">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2 surat">
+                  <img src="/images/logo.png" alt="logo" width="100" />
+                </div>
+                <div class="col-sm-8 surat">
+                  <h5 class="text-center fw-bold">
+                    PEMERINTAH KABUPATEN SUKOHARJO
+                  </h5>
+                  <h5 class="text-center fw-bold">KECAMATAN NGUTER</h5>
+                  <h5 class="text-center fw-bold">DESA TANJUNGREJO</h5>
+                  <p>
+                    Alamat : Jl. Alternatif Pengkol-Wonogiri KM 03 Tanjungrejo,
+                    Sukoharjo
+                  </p>
+                </div>
+                <div class="col-sm-1"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10 surat">
+                  <hr />
+                  <h6 class="fw-bold text-center">No Kode Desa/Kelurahan</h6>
+                  <p class="text-center">Nomor : 145/12   /VI/2023</p>
+                  <p>Yang bertanda tangan dibawah ini menerangkan bahwa	:</p>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>1.	Nama</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>:</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>2. Tempat Tgl. Lahir</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>:</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>3.	Kewarganegaraan & Agama</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>:</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>4.	Pekerjaan</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>:</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>5. Tempat Tinggal</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>:</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>6.	Surat bukti diri</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>:</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>7.	Keperluan</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>:</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>8. Tujuan</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>:</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>9.	Berlaku</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>:</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>10.	Keterangan lain</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>:</p>
+                    </div>
+                  </div>
+
+                  <p>Demikian surat pengantar ini dibuat untuk dapat digunakan sebagaimana mestinya.</p>
+
+                  <div class="row">
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6 float-end">Tanjungrejo,</div>
+                  </div>
+
+                  <div class="row mt-3">
+                    <div class="col-sm-6">
+                      <p>Tanda Tangan Pemegang</p>
+                    </div>
+                    <div class="col-sm-6 float-end">
+                      <p>Sekretaris Desa Tanjungrejo</p>
+                    </div>
+                  </div>
+
+                  <div class="row mt-5">
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6 float-end fw-bold">(FERI PRIHANANTO, S.E)</div>
+                  </div>
+                  
+                </div>
+                <div class="col-sm-1"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10"></div>
+                <div class="col-sm-1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer />
+      <!-- End of Footer -->
+    </div>
+    <!-- End of Content Wrapper -->
+  </div>
+</template>
+
+<script>
+import html2pdf from "html2pdf.js";
+
+export default {
+  data() {
+    return {
+      pengajuanSurat: [],
+      fileName: "",
+      itemID: null,
+      user_id: "",
+    };
+  },
+  name: "app",
+  methods: {
+  async fetchData() {
+    this.itemID = this.$route.params.id;
+    const response = await axios.get(`/api/auth/pengajuan/${this.itemID}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+    console.log("id :", this.itemID);
+    this.pengajuanSurat = response.data.data;
+
+    // Format the created_at field to Asia/Jakarta timezone with "dd-mm-yyyy" format
+    const created_at = new Date(this.pengajuanSurat.created_at);
+    const options = {
+      timeZone: "Asia/Jakarta",
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    };
+    this.pengajuanSurat.created_at = created_at
+      .toLocaleString("en-US", options)
+      .replace(",", "");
+
+    console.log("data :", this.pengajuanSurat.created_at);
+  },
+
+  // tesst
+  async exportToPDF() {
+    const elementToConvert = document.getElementById("element-to-convert");
+    const pdfData = await html2pdf().from(elementToConvert).output("blob");
+
+    const formData = new FormData();
+    formData.append("surat", pdfData, "surat_pengantar.pdf");
+    formData.append("user_id", this.pengajuanSurat.user_id); // Memperbaiki 'user_id' yang sebelumnya adalah 'this.user_id'
+    formData.append("pengajuan_id", this.pengajuanSurat.id);
+
+    try {
+      const response = await axios.post(`/api/auth/surat`, formData, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      console.log('test',response.data.message)
+      if (!response.data.message) { // Mengubah pengecekan respon karena tidak ada response.ok pada axios
+        throw new Error("Gagal mengirimkan PDF ke API.");
+      }
+
+      console.log("PDF berhasil dikirim ke API.");
+      await this.updateStatus();
+      // Lakukan tindakan lain setelah berhasil mengirimkan PDF ke API
+    } catch (error) {
+      console.error(error);
+      // Tangani kesalahan jika terjadi masalah saat mengirimkan PDF ke API
+    }
+  },
+
+  // update status
+async updateStatus() {
+  try {
+    const statusData = { status_surat: "selesai" };
+    const response = await axios.put(
+      `/api/auth/pengajuan/${this.pengajuanSurat.id}`,
+      statusData,
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      }
+    );
+
+    if (!response.data.message) {
+      throw new Error("Gagal memperbarui status surat.");
+    }
+
+    console.log("Status surat berhasil diperbarui.");
+    this.$router.push('/admin-surat');
+  } catch (error) {
+    console.error(error);
+    throw error; // Lanjutkan melemparkan error ke pemanggil fungsi jika terjadi kesalahan
+  }
+},
+
+},
+
+  created() {
+    // axios
+    //   .get(`http://localhost:8000/api/auth/me/`, {
+    //     headers: {
+    //       Authorization: "Bearer " + localStorage.getItem("token"),
+    //     },
+    //   })
+    //   .then((response) => {
+    //     const role = response.data.role; // Get the user's role from the response
+    //     this.user_id = response.data.id;
+
+    //     const token = localStorage.getItem("token");
+    //     const expires_in = localStorage.getItem("expires_in");
+    //     if (!token || !expires_in || new Date() > new Date(expires_in)) {
+    //       // If token is missing or expired, redirect to the home page
+    //       localStorage.removeItem("token");
+    //       localStorage.removeItem("expires_in");
+    //       this.$router.push("/");
+    //     } else if (role !== "admin") {
+    //       // If the admin doesn't have admin privileges, redirect to the unauthorized page
+    //       this.$router.push("/unauthorized");
+    //       // console.log(response.data.role)
+    //     } else {
+    //       console.log('role: ',role)
+    //       console.log("success");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+
+
+    // axios
+    //   .get(`http://localhost:8000/api/auth/me/`, {
+    //     headers: {
+    //       Authorization: "Bearer " + localStorage.getItem("token"),
+    //     },
+    //   }) // Gunakan properti 'id' sebagai bagian dari URL endpoint
+    //   .then((response) => {
+    //     this.user_id = response.data.id;
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+    this.fetchData();
+    // console.log(Vue.version)
+  },
+  mounted() {
+    // Panggil method fetchData setiap kali nilai itemID berubah
+    this.$watch("itemID", this.fetchData);
+  },
+};
+</script>
+
+<style scoped>
+.surat {
+  background-color: #ffffff !important;
+}
+hr {
+  border: none;
+  height: 3px;
+  /* Set the hr color */
+  color: #000000 !important; /* old IE */
+  background-color: #000000 !important; /* Modern Browsers */
+}
+#app {
+  margin-top: 60px;
+  /* text-align: center; */
+}
+</style>
