@@ -15,12 +15,7 @@
             class="d-sm-flex align-items-center justify-content-between mb-4"
           >
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a
-              href="#"
-              class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-              ><i class="fas fa-download fa-sm text-white-50"></i> Generate
-              Report</a
-            >
+          
           </div>
 
           <!-- Content Row -->
@@ -34,14 +29,15 @@
                       <div
                         class="text-xs font-weight-bold text-primary text-uppercase mb-1"
                       >
-                        Barang (Bulan ini)
+                        Jumlah Pengajuan
                       </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        40,000
+                        {{jumlahPengajuan}}
                       </div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      <!-- <i class="fa-solid fa-list"></i> -->
+                      <i class="fas fa-solid fa-list fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -57,14 +53,15 @@
                       <div
                         class="text-xs font-weight-bold text-success text-uppercase mb-1"
                       >
-                        Note (Bulan ini)
+                        Pengajuan Selesai
                       </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        215,000
+                        {{pengajuanSelesai}}
                       </div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      <!-- <i class="fa-solid fa-check-double"></i> -->
+                      <i class="fas fa-solid fa-check-double fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -80,27 +77,18 @@
                       <div
                         class="text-xs font-weight-bold text-info text-uppercase mb-1"
                       >
-                        Belum Ditandatangani
+                        Pengajuan Proses 
                       </div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
                           <div
                             class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
                           >
-                            50
+                            {{pengajuanProses}}
                           </div>
                         </div>
                         <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div
-                              class="progress-bar bg-info"
-                              role="progressbar"
-                              style="width: 50%"
-                              aria-valuenow="50"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            ></div>
-                          </div>
+                          
                         </div>
                       </div>
                     </div>
@@ -121,14 +109,15 @@
                       <div
                         class="text-xs font-weight-bold text-warning text-uppercase mb-1"
                       >
-                        Petugas
+                        Jumlah Pengguna
                       </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        18
+                        {{jumlahPengguna}}
                       </div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                      <!-- <i class="fas fa-comments fa-2x text-gray-300"></i> -->
+                      <i class="fas fa-solid fa-users fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -148,3 +137,76 @@
   </div>
   <!-- End of Page Wrapper -->
 </template>
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      jumlahPengajuan:0,
+      pengajuanProses:0,
+      pengajuanSelesai:0,
+      jumlahPengguna:0
+    };
+  },
+  methods: {
+    async fetchPengajuan() {
+      try {
+        const response = await axios.get("http://localhost:8000/api/auth/pengajuan",{
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+          }
+        });
+       this.jumlahPengajuan = response.data.data.length; // jumlah pengajuan
+        this.pengajuanProses = response.data.data.filter(item => item.status_surat === 'proses').length; // jumlah status proses
+        this.pengajuanSelesai = response.data.data.filter(item => item.status_surat === 'selesai').length; // jumlah status selesai
+      
+       } catch (error) {
+        console.error(error);
+      }
+    },
+    async fetchUser() {
+      try {
+        const response = await axios.get("http://localhost:8000/api/auth/list-user",{
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+          }
+        });
+        this.jumlahPengguna = response.data.data.length; //jumlah pengguna
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
+  created() {
+    axios
+      .get(`http://localhost:8000/api/auth/me/`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        const role = response.data.role; // Get the user's role from the response
+
+        const token = localStorage.getItem("token");
+        const expires_in = localStorage.getItem("expires_in");
+        if (!token || !expires_in || new Date() > new Date(expires_in)) {
+          // If token is missing or expired, redirect to the home page
+          localStorage.removeItem("token");
+          localStorage.removeItem("expires_in");
+          this.$router.push("/");
+        } else if (role !== "admin") {
+          // If the user doesn't have admin privileges, redirect to the unauthorized page
+          this.$router.push("/unauthorized");
+          // console.log(response.data.role)
+        } else {
+          this.fetchPengajuan();
+          this.fetchUser();
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        this.$router.push("/");
+      });
+  },
+};
+</script>

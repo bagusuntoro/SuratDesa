@@ -1,23 +1,20 @@
 <template>
   <!-- Sidebar -->
-      <ul
-      class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-      id="accordionSidebar"
-      :class="{'toggled': sidebarToggled}"
-    >
+  <ul
+    class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+    :class="{ toggled: sidebarToggled }"
+  >
     <!-- Sidebar - Brand -->
     <a
       class="sidebar-brand d-flex align-items-center justify-content-center"
       href="#"
     >
       <div class="sidebar-brand-icon mt-2">
-        <img src="/images/logo.png" alt="logo" width="50" />
+        <img src="/images/KabupatenSukoharjo.png" alt="logo" width="50" />
       </div>
       <div class="sidebar-brand-text mx-3">Pengajuan <sup>Surat</sup></div>
     </a>
-
-    <!-- Divider -->
-    <!-- <hr class="sidebar-divider my-0 mt-5"> -->
 
     <!-- Heading -->
     <div class="sidebar-heading mt-5">Menu</div>
@@ -38,7 +35,7 @@
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <hr class="sidebar-divider" />
 
     <!-- Heading -->
     <div class="sidebar-heading">Others</div>
@@ -64,33 +61,40 @@
       >
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Management Users</h6>
-          <a class="collapse-item" href="#l">Data User</a>
-          <a class="collapse-item" href="#">Data Admin</a>
+          <router-link class="collapse-item" to="admin-list-user">
+            Data User
+          </router-link>
+          <a class="collapse-item custom-disabled" href="#">Action</a>
         </div>
       </div>
     </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block" />
-
-   <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle" @click="toggleSidebar"></button>
-      </div>
-    </ul>
-    <!-- End of Sidebar -->
+  </ul>
+  <!-- End of Sidebar -->
 </template>
 <script>
+import { EventBus } from "../event-bus";
 export default {
   data() {
     return {
-      sidebarToggled: false
+      sidebarToggled: false,
     };
   },
-  methods: {
-    toggleSidebar() {
+  methods: {},
+  created() {
+    EventBus.$on('toggle-sidebar', () => {
       this.sidebarToggled = !this.sidebarToggled;
-    }
-  }
+    });
+  },
 };
 </script>
+
+<style scoped>
+.custom-disabled {
+  /* Ganti properti CSS sesuai kebutuhan untuk menggantikan class 'disable' */
+  pointer-events: none; /* contoh menggantikan 'disable' */
+  cursor: not-allowed; /* contoh menggantikan 'disable' */
+}
+</style>

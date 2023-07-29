@@ -164,14 +164,16 @@ var render = function render() {
   }, [_c("navbar"), _vm._v(" "), _c("h1", {
     staticClass: "text-center h3"
   }, [_vm._v("List Pengajuan Surat")]), _vm._v(" "), _c("div", {
-    staticClass: "row"
+    staticClass: "row mt-5"
   }, [_c("div", {
-    staticClass: "col-sm-1"
+    staticClass: "col-md-1"
   }), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-10"
-  }, [_vm._m(0), _vm._v(" "), _c("table", {
+    staticClass: "col-md-10"
+  }, [_c("div", {
+    staticClass: "table-responsive"
+  }, [_c("table", {
     staticClass: "table table-striped mt-2"
-  }, [_vm._m(1), _vm._v(" "), _c("tbody", _vm._l(_vm.note, function (item, index) {
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.note, function (item, index) {
     return _c("tr", {
       key: item.id
     }, [_c("th", {
@@ -180,46 +182,21 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(index + 1))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.nama))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.nik))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(item.jenis_surat))]), _vm._v(" "), _c("td", [item.status_surat === "proses" ? _c("span", {
       staticClass: "btn btn-warning"
-    }, [_vm._v("\n                    " + _vm._s(item.status_surat) + "\n                  ")]) : _vm._e(), _vm._v(" "), item.status_surat === "selesai" ? _c("a", {
+    }, [_vm._v("\n                      " + _vm._s(item.status_surat) + "\n                    ")]) : _vm._e(), _vm._v(" "), item.status_surat === "selesai" ? _c("a", {
       attrs: {
         href: _vm.getSuratUrl(item.surat.surat),
         download: ""
       }
     }, [_c("span", {
       staticClass: "btn btn-primary"
-    }, [_vm._v("\n                      " + _vm._s(item.status_surat) + " "), _c("i", {
+    }, [_vm._v("\n                        " + _vm._s(item.status_surat) + " "), _c("i", {
       staticClass: "fas fa-download"
-    })])]) : _vm._e()]), _vm._v(" "), _c("td", [_c("button", {
-      staticClass: "btn btn-warning",
-      staticStyle: {
-        "float": "right"
-      },
-      attrs: {
-        type: "button"
-      },
-      on: {
-        click: function click($event) {
-          return _vm.detail(item.id);
-        }
-      }
-    }, [_c("i", {
-      staticClass: "bi bi-ticket-detailed"
-    })])])]);
-  }), 0)])]), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-1"
+    })])]) : _vm._e()])]);
+  }), 0)])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-1"
   })])], 1), _vm._v(" "), _c("footer")])], 1);
 };
 var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "row mt-5"
-  }, [_c("div", {
-    staticClass: "col-sm-3"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "col-sm-9"
-  })]);
-}, function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("thead", [_c("tr", [_c("th", {
@@ -242,11 +219,7 @@ var staticRenderFns = [function () {
     attrs: {
       scope: "col"
     }
-  }, [_vm._v("Status")]), _vm._v(" "), _c("th", {
-    attrs: {
-      scope: "col"
-    }
-  }, [_vm._v("Action")])])]);
+  }, [_vm._v("Status")])])]);
 }];
 render._withStripped = true;
 

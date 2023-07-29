@@ -1,5 +1,5 @@
 <template>
-    <div id="wrapper">
+  <div id="wrapper">
     <sidebar />
 
     <!-- Content Wrapper -->
@@ -9,63 +9,50 @@
         <navbar />
 
         <!-- Begin Page Content -->
-         <h1 class="text-center h3">List Pengajuan Surat</h1>
-        <div class="row">
-          <div class="col-sm-1"></div>
-          <div class="col-sm-10">
-            <div class="row mt-5">
-              <div class="col-sm-3">
-                <!-- <router-link class="btn btn-primary me-2" to="/pengajuan-surat">
-                  <i class="bi bi-plus"></i>
-                </router-link> -->
-              </div>
-              <div class="col-sm-9"></div>
-            </div>
-            <table class="table table-striped mt-2">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Nama</th>
-                  <th scope="col">NIK</th>
-                  <th scope="col">Jenis Surat</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(item, index) in note" :key="item.id">
-                  <th scope="row">{{ index + 1 }}</th>
-                  <td>{{ item.nama }}</td>
-                  <td>{{ item.nik }}</td>
-                  <td>{{ item.jenis_surat }}</td>
-                  <td>
-                    <span v-if="item.status_surat==='proses'" class="btn btn-warning">
-                      {{ item.status_surat }}
-                    </span>
-                   <a :href="getSuratUrl(item.surat.surat)" download v-if="item.status_surat === 'selesai'">
-                      <span class="btn btn-primary">
-                        {{ item.status_surat }} <i class="fas fa-download"></i>
+        <h1 class="text-center h3">List Pengajuan Surat</h1>
+        <div class="row mt-5">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <div class="table-responsive">
+              <table class="table table-striped mt-2">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">NIK</th>
+                    <th scope="col">Jenis Surat</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(item, index) in note" :key="item.id">
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td>{{ item.nama }}</td>
+                    <td>{{ item.nik }}</td>
+                    <td>{{ item.jenis_surat }}</td>
+                    <td>
+                      <span
+                        v-if="item.status_surat==='proses'"
+                        class="btn btn-warning"
+                      >
+                        {{ item.status_surat }}
                       </span>
-                    </a>
+                      <a
+                        :href="getSuratUrl(item.surat.surat)"
+                        download
+                        v-if="item.status_surat === 'selesai'"
+                      >
+                        <span class="btn btn-primary">
+                          {{ item.status_surat }} <i class="fas fa-download"></i>
+                        </span>
+                      </a>
                     </td>
-                  <td>
-                    <button type="button" @click="detail(item.id)" class="btn btn-warning" style="float:right;">
-                      <i class="bi bi-ticket-detailed"></i>
-                    </button>
-                    <!-- <router-link
-                      :to="{
-                        name: 'user-detail-note',
-                        params: { id: item.id },
-                      }"
-                      class="btn btn-warning me-2"
-                    >
-                    </router-link> -->
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div class="col-sm-1"></div>
+          <div class="col-md-1"></div>
         </div>
         <!-- /.container-fluid -->
       </div>

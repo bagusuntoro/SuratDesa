@@ -55,20 +55,28 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           Authorization: 'Bearer ' + localStorage.getItem('token')
         }
       }).then(function (response) {
-        _this.$router.push('/user-surat');
+        _this.showAlert();
       })["catch"](function (error) {
         console.error(error);
+      });
+    },
+    showAlert: function showAlert() {
+      var _this2 = this;
+      // Use sweetalert2
+      this.$swal("Data Berhasil di inputkan!!").then(function () {
+        _this2.$router.push('/user-surat');
+        ;
       });
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
     axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/auth/me/", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }
     }).then(function (response) {
-      _this2.user_id = response.data.id;
+      _this3.user_id = response.data.id;
       var role = response.data.role; // Get the user's role from the response
       var token = localStorage.getItem("token");
       var expires_in = localStorage.getItem("expires_in");
@@ -76,17 +84,17 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         // If token is missing or expired, redirect to the home page
         localStorage.removeItem("token");
         localStorage.removeItem("expires_in");
-        _this2.$router.push("/");
+        _this3.$router.push("/");
       } else if (role !== "user") {
         // If the user doesn't have admin privileges, redirect to the unauthorized page
-        _this2.$router.push("/unauthorized");
+        _this3.$router.push("/unauthorized");
         // console.log(response.data.role)
       } else {
         console.log("success");
       }
     })["catch"](function (error) {
       console.error(error);
-      _this2.$router.push("/");
+      _this3.$router.push("/");
     });
   }
 });
@@ -180,13 +188,13 @@ var render = function render() {
     }
   }, [_vm._v("Pilih")]), _vm._v(" "), _c("option", {
     attrs: {
-      value: "SKTM"
+      value: "Pengantar Umum"
     }
-  }, [_vm._v("SKTM")]), _vm._v(" "), _c("option", {
+  }, [_vm._v("Pengantar Umum")]), _vm._v(" "), _c("option", {
     attrs: {
       value: "Pengantar SKCK"
     }
-  }, [_vm._v("SKCK")])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Pengantar SKCK")])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-sm-6"
   }, [_c("div", {
     staticClass: "mb-3"
@@ -321,11 +329,11 @@ var render = function render() {
     }
   }, [_vm._v("Pilih")]), _vm._v(" "), _c("option", {
     attrs: {
-      value: "laki"
+      value: "Laki-laki"
     }
   }, [_vm._v("Laki-laki")]), _vm._v(" "), _c("option", {
     attrs: {
-      value: "perempuan"
+      value: "Perempuan"
     }
   }, [_vm._v("Perempuan")])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-sm-6"
@@ -398,13 +406,25 @@ var render = function render() {
     }
   }, [_vm._v("Pilih")]), _vm._v(" "), _c("option", {
     attrs: {
-      value: "islam"
+      value: "Islam"
     }
   }, [_vm._v("Islam")]), _vm._v(" "), _c("option", {
     attrs: {
-      value: "x"
+      value: "Kristen"
     }
-  }, [_vm._v("...")])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Kristen")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Hindu"
+    }
+  }, [_vm._v("Hindu")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Budha"
+    }
+  }, [_vm._v("Budha")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "Konghucu"
+    }
+  }, [_vm._v("Konghucu")])])])]), _vm._v(" "), _c("div", {
     staticClass: "col-sm-6"
   }, [_c("div", {
     staticClass: "mb-3"
@@ -506,17 +526,13 @@ var render = function render() {
     }
   }, [_vm._v("Pilih")]), _vm._v(" "), _c("option", {
     attrs: {
-      value: "menikah"
+      value: "Kawin"
     }
-  }, [_vm._v("Menikah")]), _vm._v(" "), _c("option", {
+  }, [_vm._v("Kawin")]), _vm._v(" "), _c("option", {
     attrs: {
-      value: "jada-duda"
+      value: "Belum"
     }
-  }, [_vm._v("Janda/Duda")]), _vm._v(" "), _c("option", {
-    attrs: {
-      value: "pelajar"
-    }
-  }, [_vm._v("Pelajar/Mahasiswa")])])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Belum")])])])])]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-sm-6"
@@ -679,13 +695,16 @@ var render = function render() {
   }, [_vm._v("Keterangan Tambahan")])])]), _vm._v(" "), _c("div", {
     staticClass: "row mt-3"
   }, [_c("div", {
-    staticClass: "col-sm-6"
+    staticClass: "col-6"
   }, [_c("router-link", {
-    staticClass: "btn btn-danger mb-5",
+    staticClass: "btn btn-danger btn-block mb-5",
+    staticStyle: {
+      width: "100px"
+    },
     attrs: {
       to: "/user-note"
     }
-  }, [_vm._v("Kembali")])], 1), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n                Kembali\n              ")])], 1), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c("div", {
     staticClass: "col-sm-1"
   })])])])], 1), _vm._v(" "), _c("footer")])], 1);
 };
@@ -693,16 +712,17 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "col-sm-6"
+    staticClass: "col-6"
   }, [_c("button", {
-    staticClass: "btn btn-primary",
+    staticClass: "btn btn-primary btn-block",
     staticStyle: {
+      width: "100px",
       "float": "right"
     },
     attrs: {
       type: "submit"
     }
-  }, [_vm._v("\n                    Kirim\n                  ")])]);
+  }, [_vm._v("\n                Kirim\n              ")])]);
 }];
 render._withStripped = true;
 

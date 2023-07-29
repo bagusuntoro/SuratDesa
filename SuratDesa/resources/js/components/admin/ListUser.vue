@@ -9,88 +9,43 @@
         <navbar />
 
         <!-- Begin Page Content -->
-        <h1 class="text-center h3">List Pengajuan Surat</h1>
-
-
-
+        <h1 class="text-center h3">List User</h1>
         <div class="row">
           <div class="col-sm-1"></div>
           <div class="col-sm-10">
+            <div class="row mt-5">
+              <div class="col-sm-3">
+                <router-link class="btn btn-primary me-2" to="admin-tambah-user">
+                  <i class="bi bi-plus"></i>
+                </router-link>
+              </div>
+              <div class="col-sm-9"></div>
+            </div>
             <div class="table-responsive">
               <table class="table table-striped mt-2">
                 <thead>
                   <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama</th>
-                    <th scope="col">NIK</th>
-                    <th scope="col">Jenis Surat</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">email</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(item, index) in note" :key="item.id">
+                  <tr v-for="(item, index) in user" :key="item.id">
                     <th scope="row">{{ index + 1 }}</th>
-                    <td>{{ item.nama }}</td>
-                    <td>{{ item.nik }}</td>
-                    <td>{{ item.jenis_surat }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.email }}</td>
                     <td>
-                      <span
-                        v-if="item.status_surat === 'proses'"
-                        class="btn btn-warning"
+                      <!-- <router-link
+                      :to="{ name: 'admin-edit-user', params: { id: item.id } }"
+                      class="btn btn-warning"
                       >
-                        {{ item.status_surat }}
-                      </span>
-                      <span
-                        class="btn btn-primary"
-                        v-if="item.status_surat === 'selesai'"
-                      >
-                        {{ item.status_surat }}
-                      </span>
-                    </td>
-                    <td>
-                      <!-- Example single danger button -->
-                      <div class="btn-group">
-                        <button
-                          type="button"
-                          class="btn btn-primary dropdown-toggle"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                          v-if="item.status_surat === 'proses'"
-                        >
-                          Cetak
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li>
-                              <router-link
-                                  :to="{ name: 'pengantar-umum', params: { id: item.id } }"
-                                  class="dropdown-item"
-                              >
-                                  Pengantar Umum
-                              </router-link> 
-                              <!-- <a class="dropdown-item" href="/admin-skck">SKTM</a> -->
-                          </li>
-                          <li>
-                              <router-link
-                                  :to="{ name: 'pengantar-skck', params: { id: item.id } }"
-                                  class="dropdown-item"
-                              >
-                                  Pengantar SKCK
-                              </router-link>
-                            <!-- <a class="dropdown-item" href="#">Pengantar SKCK</a> -->
-                          </li>
-                        </ul>
-                      </div>
-                      <!-- <button
-                        type="button"
-                        @click="detail(item.id)"
-                        class="btn btn-warning"
-                      >
-                        <i class="bi bi-ticket-detailed"></i>
-                      </button>
+                        <i class="bi bi-pencil-square"></i>
+                      </router-link> -->
                       <button @click="deleteItem(item.id)" class="btn btn-danger">
                         <i class="bi bi-trash3"></i>
-                      </button> -->
+                      </button>
                     </td>
                   </tr>
                 </tbody>
@@ -117,21 +72,18 @@ import Swal from "sweetalert2";
 export default {
   data() {
     return {
-      note: [],
+      user: [],
     };
   },
   methods: {
-    detail(id) {
-      this.$router.push({ name: "user-detail-note", params: { id: id } });
-    },
-    async fetchNote() {
+    async fetchUser() {
       try {
-        const response = await axios.get("http://localhost:8000/api/auth/pengajuan",{
+        const response = await axios.get("http://localhost:8000/api/auth/list-user",{
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
           }
         });
-        this.note = response.data.data.filter(item => item.status_surat === 'proses');
+        this.user = response.data.data;
       } catch (error) {
         console.error(error);
       }
@@ -151,7 +103,7 @@ export default {
         // Jika user mengklik tombol "Hapus"
         // Lakukan proses delete
         axios
-          .delete(`http://localhost:8000/api/auth/notes/${id}`, {
+          .delete(`http://localhost:8000/api/auth/delete-user/${id}`, {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("token"),
             },
@@ -159,7 +111,7 @@ export default {
           .then((response) => {
             // Berhasil dihapus dari server, lakukan aksi selanjutnya jika diperlukan
             console.log(response.data);
-            this.fetchNote();
+            this.fetchUser();
           })
           .catch((error) => {
             // Terjadi error saat menghapus data dari server, tampilkan pesan error jika diperlukan
@@ -176,7 +128,7 @@ export default {
         });
 
         // Redirect ke halaman tertentu
-        this.$router.push("/admin-surat");
+        this.$router.push("/admin-list-user");
       }
     },
   },
@@ -204,7 +156,7 @@ export default {
         } else {
           console.log('role: ',role)
           console.log("success");
-          this.fetchNote();
+          this.fetchUser();
         }
       })
       .catch((error) => {

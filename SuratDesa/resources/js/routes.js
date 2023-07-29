@@ -5,14 +5,14 @@ export const routes = [
         component: () => import('./components/Unauthorized.vue')
     },
     {
-        path: "/skck",
-        name: 'skck',
+        path: "/pengantar-skck",
+        name: 'pengantar-skck',
         component: () => import('./components/admin/SKCK.vue')
     },
     {
-        path: "/pengantar",
-        name: 'pengantar',
-        component: () => import('./components/admin/Pengantar.vue')
+        path: "/pengantar-umum",
+        name: 'pengantar-umum',
+        component: () => import('./components/admin/Umum.vue')
     },
     {
         path: "/",
@@ -40,6 +40,21 @@ export const routes = [
         path: '/admin-surat',
         name: 'admin-surat',
         component: () => import('./components/admin/ListSurat.vue')
+    },
+    {
+        path: '/admin-list-user',
+        name: 'admin-list-user',
+        component: () => import('./components/admin/ListUser.vue')
+    },
+    {
+        path: '/admin-tambah-user',
+        name: 'admin-tambah-user',
+        component: () => import('./components/admin/TambahUser.vue')
+    },
+    {
+        path: '/admin-edit-user',
+        name: 'admin-edit-user',
+        component: () => import('./components/admin/EditUser.vue')
     },
 
 

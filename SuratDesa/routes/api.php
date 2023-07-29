@@ -23,6 +23,11 @@ Route::group([
       Route::group([
         'middleware' => 'auth:api'
       ], function () {
+        Route::get('list-user', [AuthController::class,'listUser']);
+        Route::get('detail-user/{id}', [AuthController::class,'getById']);
+        Route::put('update-user/{id}', [AuthController::class,'updateUser']);
+        Route::delete('delete-user/{id}', [AuthController::class,'deleteUser']);
+
         Route::get('surat',[SuratController::class,'listSurat']);
         Route::post('surat',[SuratController::class,'createSurat']);
         Route::get('pengajuan/{id}',[PengajuanSuratController::class,'getById']);
@@ -34,5 +39,4 @@ Route::group([
       
     });
   });
-  
 

@@ -15,11 +15,11 @@ class CreatePengajuanSuratsTable extends Migration
     {
         Schema::create('pengajuan_surats', function (Blueprint $table) {
             $table->id();
-            $table->enum('jenis_surat',['SKTM','Pengantar SKCK']);
+            $table->enum('jenis_surat',['Pengantar Umum','Pengantar SKCK']);
             $table->string('nama');
             $table->string('nik')->unique();
             $table->string('ttl');
-            $table->enum('jenis_kelamin',['laki','perempuan']);
+            $table->enum('jenis_kelamin',['Laki-laki','Perempuan']);
             $table->string('warganegara');
             $table->string('agama');
             $table->string('pekerjaan');

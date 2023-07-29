@@ -17,6 +17,74 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
+    public function listUser()
+    {
+        $data = User::all();
+
+        return response()->json([
+            'message' => 'success',
+            'data' => $data
+        ]);
+    }
+
+    public function getById($id)
+    {
+        $data = User::find($id);
+        return response()->json([
+            'message' => 'success',
+            'data' => $data
+        ]);
+    }
+
+    public function updateUser($id)
+    {
+        $validator = Validator::make(request()->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'password' => 'sometimes|required|min:6',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Validation Error',
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+    
+        $data = User::find($id);
+    
+        if (!$data) {
+            return response()->json([
+                'message' => 'User not found',
+            ], 404);
+        }
+    
+        $data->name = request('name');
+        $data->email = request('email');
+    
+        // Check if the password is provided and not empty before updating
+        if (request()->filled('password')) {
+            $data->password = bcrypt(request('password'));
+        }
+    
+        $data->save();
+    
+        return response()->json([
+            'message' => 'success',
+            'data' => $data
+        ]);
+    }
+    
+
+    public function deleteUser($id)
+    {
+        $data = User::find($id);
+        $data->delete();
+        return response()->json([
+            'message' => 'success'
+        ]);
+    }
+
     public function register()
     {
         $validator = Validator::make(request()->all(), [

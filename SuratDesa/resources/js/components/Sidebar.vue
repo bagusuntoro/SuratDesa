@@ -11,13 +11,10 @@
       href="#"
     >
       <div class="sidebar-brand-icon mt-2">
-        <img src="/images/logo.png" alt="logo" width="50" />
+        <img src="/images/KabupatenSukoharjo.png" alt="logo" width="50" />
       </div>
       <div class="sidebar-brand-text mx-3">Pengajuan <sup>Surat</sup></div>
     </a>
-
-    <!-- Divider -->
-    <!-- <hr class="sidebar-divider my-0 mt-5"> -->
 
     <!-- Heading -->
     <div class="sidebar-heading mt-5">Menu</div>
@@ -36,54 +33,21 @@
         <span>List Surat</span>
       </router-link>
     </li>
-
-    <!-- Nav Item - Pages Collapse Menu -->
+    <!-- Nav Item - note -->
     <li class="nav-item">
-      <a
-        class="nav-link collapsed"
-        href="#"
-        data-toggle="collapse"
-        data-target="#collapseTwo"
-        aria-expanded="true"
-        aria-controls="collapseTwo"
-      >
+      <router-link class="nav-link" to="/user-pengantar">
         <i class="bi bi-plus"></i>
-        <span>Surat</span>
-      </a>
-      <div
-        id="collapseTwo"
-        class="collapse"
-        aria-labelledby="headingTwo"
-        data-parent="#accordionSidebar"
-      >
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Menu surat</h6>
-
-          <router-link class="collapse-item" to="/user-pengantar">
-            <span>Pengantar</span>
-          </router-link>
-          <router-link class="collapse-item" to="/user-skck">
-            <span>SKCK</span>
-          </router-link>
-        </div>
-      </div>
+        <span>Pengajuan Surat</span>
+      </router-link>
     </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block" />
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-      <button
-        class="rounded-circle border-0"
-        id="sidebarToggle"
-        @click="toggleSidebar"
-      ></button>
-    </div>
   </ul>
   <!-- End of Sidebar -->
 </template>
+
 <script>
+import { EventBus } from '../event-bus';
 export default {
   data() {
     return {
@@ -91,9 +55,11 @@ export default {
     };
   },
   methods: {
-    toggleSidebar() {
+  },
+  created() {
+    EventBus.$on('toggle-sidebar', () => {
       this.sidebarToggled = !this.sidebarToggled;
-    },
+    });
   },
 };
 </script>

@@ -10,7 +10,7 @@
 
         <!-- Begin Page Content -->
         <div id="app" ref="document">
-          <button @click="exportToPDF">Export to PDF</button>
+          <button @click="exportToPDF" class="m-auto">Export to PDF</button>
           <div id="element-to-convert">
             <div class="text-black">
               <div class="row mt-5">
@@ -35,118 +35,139 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-10 surat">
                   <hr />
-                  <p>No Kode Desa/Kelurahan</p>
-                  <p>33 11 052001</p>
+                  <h6 class="fw-bold text-center">No Kode Desa/Kelurahan</h6>
+                  <p class="text-center">
+                    Nomor : 0{{ jumlahPengajuan }}/0{{ itemID }}/VI/2023
+                  </p>
+                  <p>Yang bertanda tangan dibawah ini menerangkan bahwa :</p>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>1. Nama</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>: {{ this.pengajuanSurat.nama }}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>2. Tempat Tgl. Lahir</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>: {{ this.pengajuanSurat.ttl }}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>3. Kewarganegaraan & Agama</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>
+                        : {{ this.pengajuanSurat.warganegara }} /
+                        {{ this.pengajuanSurat.agama }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>4. Pekerjaan</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>: {{ this.pengajuanSurat.pekerjaan }}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>5. Tempat Tinggal</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>: {{ this.pengajuanSurat.alamat }}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>6. Surat bukti diri</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>: {{ this.pengajuanSurat.bukti_diri }}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>7. Keperluan</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>: {{ this.pengajuanSurat.keperluan }}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>8. Tujuan</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>: {{ this.pengajuanSurat.tujuan }}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>9. Berlaku</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>: {{ this.pengajuanSurat.berlaku_mulai }}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                      <p>10. Keterangan lain</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <p>: {{ this.pengajuanSurat.keterangan }}</p>
+                    </div>
+                  </div>
+
+                  <p>
+                    Demikian surat pengantar ini dibuat untuk dapat digunakan
+                    sebagaimana mestinya.
+                  </p>
+
+                  <div class="row">
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6 float-end">Tanjungrejo,</div>
+                  </div>
+
+                  <div class="row mt-3">
+                    <div class="col-sm-6">
+                      <p>Tanda Tangan Pemegang</p>
+                    </div>
+                    <div class="col-sm-6 float-end">
+                      <p>Sekretaris Desa Tanjungrejo</p>
+                    </div>
+                  </div>
+
+                  <div class="row mt-5">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5 fw-bold">
+                      ({{ pengajuanSurat.nama }})
+                    </div>
+                    <div class="col-sm-6 float-end fw-bold">
+                      (FERI PRIHANANTO, S.E)
+                    </div>
+                  </div>
                 </div>
                 <div class="col-sm-1"></div>
               </div>
               <div class="row">
                 <div class="col-sm-1"></div>
-                <div class="col-sm-10 surat">
-                  <p class="text-center">KETERANGAN</p>
-                  <p class="text-center">
-                    Surat {{ pengajuanSurat.jenis_surat }}
-                  </p>
-                  <p class="text-center">PENGANTAR</p>
-                  <p class="text-center">
-                    Nomor : 0{{ jumlahPengajuan }}/0{{ itemID }}/ VII/2023
-                  </p>
-                  <p>
-                    Yang bertandatangan di bawah ini kami Kepala Desa
-                    Tanjungrejo Kecamatan Nguter Kabupaten Sukoharjo,
-                    menerangkan bahwa :
-                  </p>
-                  <div class="row">
-                    <div class="col-sm-4">Nama</div>
-                    <div class="col-sm-4">: {{ pengajuanSurat.nama }}</div>
-                    <div class="col-sm-3"></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-4">Tempat tanggal lahir</div>
-                    <div class="col-sm-4">: {{ pengajuanSurat.ttl }}</div>
-                    <div class="col-sm-3"></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-4">Kewarganegaraan</div>
-                    <div class="col-sm-4">
-                      : {{ pengajuanSurat.warganegara }}
-                    </div>
-                    <div class="col-sm-3"></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-4">Agama</div>
-                    <div class="col-sm-4">: {{ pengajuanSurat.agama }}</div>
-                    <div class="col-sm-3"></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-4">Pekerjaan</div>
-                    <div class="col-sm-4">: {{ pengajuanSurat.pekerjaan }}</div>
-                    <div class="col-sm-3"></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-4">Alamat KTP</div>
-                    <div class="col-sm-4">: {{ pengajuanSurat.alamat }}</div>
-                    <div class="col-sm-3"></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-4">Surat Bukti Diri</div>
-                    <div class="col-sm-4">
-                      : {{ pengajuanSurat.bukti_diri }}
-                    </div>
-                    <div class="col-sm-3"></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-4">Keperluan</div>
-                    <div class="col-sm-4">: {{ pengajuanSurat.keperluan }}</div>
-                    <div class="col-sm-3"></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-4">Tujuan</div>
-                    <div class="col-sm-4">: {{ pengajuanSurat.tujuan }}</div>
-                    <div class="col-sm-3"></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-4">Berlaku Mulai</div>
-                    <div class="col-sm-4">
-                      : {{ pengajuanSurat.berlaku_mulai }}
-                    </div>
-                    <div class="col-sm-3"></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-4">Keterangan Lain-lain</div>
-                    <div class="col-sm-4">
-                      : {{ pengajuanSurat.keterangan }}
-                    </div>
-                    <div class="col-sm-3"></div>
-                  </div>
-                  <p>
-                    Demikian untuk menjadikan maklum bagi yang berkepentingan.
-                  </p>
-                  <div class="row">
-                    <div class="col-sm-8"></div>
-                    <div class="col-sm-4">
-                      Tanjungrejo, {{ pengajuanSurat.created_at }}
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <p class="text-center">Pemohon</p>
-                      <div class="row mt-5">
-                        <p class="fw-bold text-center">
-                          ({{ pengajuanSurat.nama }})
-                        </p>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <p class="text-center">Sekretaris Desa</p>
-                      <div class="row mt-5">
-                        <p class="fw-bold text-center">
-                          (FERI PRIHANANTO, S.E)
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <div class="col-sm-10"></div>
                 <div class="col-sm-1"></div>
               </div>
             </div>
@@ -201,8 +222,8 @@ export default {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       });
-      console.log("id :", this.itemID);
       this.pengajuanSurat = response.data.data;
+      console.log("id :", this.pengajuanSurat.nama);
 
       // Format the created_at field to Asia/Jakarta timezone with "dd-mm-yyyy" format
       const created_at = new Date(this.pengajuanSurat.created_at);
@@ -312,20 +333,6 @@ export default {
         console.error(error);
         this.$router.push("/");
       });
-
-    // axios
-    //   .get(`http://localhost:8000/api/auth/me/`, {
-    //     headers: {
-    //       Authorization: "Bearer " + localStorage.getItem("token"),
-    //     },
-    //   }) // Gunakan properti 'id' sebagai bagian dari URL endpoint
-    //   .then((response) => {
-    //     this.user_id = response.data.id;
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
-    // console.log(Vue.version)
   },
   mounted() {
     // Panggil method fetchData setiap kali nilai itemID berubah

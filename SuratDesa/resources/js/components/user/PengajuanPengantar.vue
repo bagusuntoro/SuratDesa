@@ -22,8 +22,8 @@
                       <label for="jenis_surat" class="form-label">Jenis Surat</label>
                       <select class="form-select" aria-label="Default select example" v-model="form.jenis_surat">
                         <option disabled value="">Pilih</option>
-                        <option value="SKTM">SKTM</option>
-                        <option value="Pengantar SKCK">SKCK</option>
+                        <option value="Pengantar Umum">Pengantar Umum</option>
+                        <option value="Pengantar SKCK">Pengantar SKCK</option>
                       </select>
                     </div>
                   </div>
@@ -78,8 +78,8 @@
                       <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
                       <select class="form-select" aria-label="Default select example" v-model="form.jenis_kelamin">
                         <option disabled value="">Pilih</option>
-                        <option value="laki">Laki-laki</option>
-                        <option value="perempuan">Perempuan</option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
                       </select>
                     </div>
                   </div>
@@ -105,8 +105,11 @@
                       <label for="agama" class="form-label">Agama</label>
                       <select class="form-select" aria-label="Default select example" v-model="form.agama">
                         <option disabled value="">Pilih</option>
-                        <option value="islam">Islam</option>
-                        <option value="x">...</option>
+                        <option value="Islam">Islam</option>
+                        <option value="Kristen">Kristen</option>
+                        <option value="Hindu">Hindu</option>
+                        <option value="Budha">Budha</option>
+                        <option value="Konghucu">Konghucu</option>
                       </select>
                     </div>
                   </div>
@@ -147,9 +150,8 @@
                       <label for="status" class="form-label">Status</label>
                       <select class="form-select" aria-label="Default select example" v-model="form.status">
                         <option disabled value="">Pilih</option>
-                        <option value="menikah">Menikah</option>
-                        <option value="jada-duda">Janda/Duda</option>
-                        <option value="pelajar">Pelajar/Mahasiswa</option>
+                        <option value="Kawin">Kawin</option>
+                        <option value="Belum">Belum</option>
                       </select>
                     </div>
                   </div>
@@ -218,7 +220,7 @@
                   </div>
                 </div>
 
-                <div class="row mt-3">
+                <!-- <div class="row mt-3">
                   <div class="col-sm-6">
                     <router-link
                       to="/user-note"
@@ -231,7 +233,19 @@
                       Kirim
                     </button>
                   </div>
-                </div>
+                </div> -->
+                <div class="row mt-3">
+              <div class="col-6">
+                <router-link to="/user-note" class="btn btn-danger btn-block mb-5" style="width:100px;">
+                  Kembali
+                </router-link>
+              </div>
+              <div class="col-6">
+                <button type="submit" class="btn btn-primary btn-block" style="width:100px; float:right">
+                  Kirim
+                </button>
+              </div>
+            </div>
               </div>
               <div class="col-sm-1"></div>
             </div>
@@ -305,11 +319,18 @@ export default {
           }
         })
         .then((response) => {
-          this.$router.push('/user-surat');
+          this.showAlert()
+          
         })
         .catch((error) => {
           console.error(error);
         });
+    },
+     showAlert() {
+      // Use sweetalert2
+      this.$swal("Data Berhasil di inputkan!!").then(() => {
+        this.$router.push('/user-surat');;
+      });
     },
   },
   created() {
