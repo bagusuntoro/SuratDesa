@@ -35,7 +35,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/auth/detail-user/".concat(_this.itemID), {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://surat-desa.surabayawebtech.com/api/auth/detail-user/".concat(_this.itemID), {
                 headers: {
                   Authorization: 'Bearer ' + localStorage.getItem('token')
                 }
@@ -64,7 +64,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (this.user.password) {
         formData.append("password", this.user.password);
       }
-      axios__WEBPACK_IMPORTED_MODULE_0___default().put("http://localhost:8000/api/auth/update-user/".concat(this.itemID), formData, {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().put("https://surat-desa.surabayawebtech.com/api/auth/update-user/".concat(this.itemID), formData, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token")
         }
@@ -79,7 +79,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   created: function created() {
     var _this3 = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/auth/me/", {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://surat-desa.surabayawebtech.com/api/auth/me/", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }

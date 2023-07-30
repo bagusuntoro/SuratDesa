@@ -91,7 +91,7 @@ export default {
 
       // Kirim permintaan POST menggunakan Axios
       axios
-        .post("http://surat-desa.surabayawebtech.com/api/auth/register", formData)
+        .post("https://surat-desa.surabayawebtech.com/api/auth/register", formData)
         .then((response) => {
           console.log(response.data);
           // Menampilkan SweetAlert sukses

@@ -50,7 +50,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       formData.append("keterangan", this.form.keterangan);
       formData.append("status_surat", this.form.status_surat);
       formData.append("user_id", this.user_id);
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/auth/pengajuan/", formData, {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("https://surat-desa.surabayawebtech.com/api/auth/pengajuan/", formData, {
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token')
         }
@@ -63,7 +63,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
   },
   created: function created() {
     var _this2 = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://localhost:8000/api/auth/me/", {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://surat-desa.surabayawebtech.com/api/auth/me/", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }

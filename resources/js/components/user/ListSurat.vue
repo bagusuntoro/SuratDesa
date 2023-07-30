@@ -85,7 +85,7 @@ export default {
     async fetchNote(id) {
       try {
         const response = await axios.get(
-          `http://surat-desa.surabayawebtech.com/api/auth/pengajuan-user/${id}`,{
+          `https://surat-desa.surabayawebtech.com/api/auth/pengajuan-user/${id}`,{
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
           }
@@ -98,7 +98,7 @@ export default {
     async fetchUser() {
       try {
         const response = await axios.get(
-          `http://surat-desa.surabayawebtech.com/api/auth/me/`,{
+          `https://surat-desa.surabayawebtech.com/api/auth/me/`,{
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
           }
@@ -113,7 +113,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://surat-desa.surabayawebtech.com/api/auth/me/`, {
+      .get(`https://surat-desa.surabayawebtech.com/api/auth/me/`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

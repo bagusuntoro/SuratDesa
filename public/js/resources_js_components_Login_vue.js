@@ -30,7 +30,7 @@ __webpack_require__.r(__webpack_exports__);
       var formData = new FormData();
       formData.append('email', this.email);
       formData.append('password', this.password);
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/auth/login', formData).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('https://surat-desa.surabayawebtech.com/api/auth/login', formData).then(function (response) {
         var token = response.data.access_token;
         var expires = response.data.expires_in;
         localStorage.setItem('token', token);

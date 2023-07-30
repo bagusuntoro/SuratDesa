@@ -126,7 +126,7 @@ export default {
     },
     async fetchNote() {
       try {
-        const response = await axios.get("http://surat-desa.surabayawebtech.com/api/auth/pengajuan",{
+        const response = await axios.get("https://surat-desa.surabayawebtech.com/api/auth/pengajuan",{
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
           }
@@ -151,7 +151,7 @@ export default {
         // Jika user mengklik tombol "Hapus"
         // Lakukan proses delete
         axios
-          .delete(`http://surat-desa.surabayawebtech.com/api/auth/notes/${id}`, {
+          .delete(`https://surat-desa.surabayawebtech.com/api/auth/notes/${id}`, {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("token"),
             },
@@ -182,7 +182,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://surat-desa.surabayawebtech.com/api/auth/me/`, {
+      .get(`https://surat-desa.surabayawebtech.com/api/auth/me/`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

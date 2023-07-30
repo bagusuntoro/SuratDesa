@@ -67,7 +67,7 @@ export default {
             formData.append('email', this.email);
             formData.append('password', this.password);
 
-            axios.post('http://surat-desa.surabayawebtech.com/api/auth/login', formData)
+            axios.post('https://surat-desa.surabayawebtech.com/api/auth/login', formData)
                 .then(response => {
                     const token = response.data.access_token;
                     const expires = response.data.expires_in;

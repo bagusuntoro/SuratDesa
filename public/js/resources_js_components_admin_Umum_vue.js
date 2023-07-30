@@ -39,7 +39,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios.get("http://localhost:8000/api/auth/pengajuan", {
+              return axios.get("https://surat-desa.surabayawebtech.com/api/auth/pengajuan", {
                 headers: {
                   Authorization: "Bearer " + localStorage.getItem("token")
                 }
@@ -198,7 +198,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   created: function created() {
     var _this6 = this;
-    axios.get("http://localhost:8000/api/auth/me/", {
+    axios.get("https://surat-desa.surabayawebtech.com/api/auth/me/", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }

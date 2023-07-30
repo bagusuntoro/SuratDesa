@@ -40,7 +40,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append("password", this.password);
 
       // Kirim permintaan POST menggunakan Axios
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/auth/register", formData).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("https://surat-desa.surabayawebtech.com/api/auth/register", formData).then(function (response) {
         console.log(response.data);
         // Menampilkan SweetAlert sukses
         sweetalert2__WEBPACK_IMPORTED_MODULE_1___default().fire({
