@@ -286,7 +286,6 @@ export default {
         tujuan: "",
         berlaku_mulai: "",
         keterangan: "",
-        status_surat: "",
         user_id: ""
       },
       user_id:''
@@ -310,7 +309,7 @@ export default {
       formData.append("tujuan", this.form.tujuan);
       formData.append("berlaku_mulai", this.form.berlaku_mulai);
       formData.append("keterangan", this.form.keterangan);
-      formData.append("status_surat", this.form.status_surat);
+      // formData.append("status_surat", this.form.status_surat);
       formData.append("user_id", this.user_id);
 
       axios.post("https://surat-desa.surabayawebtech.com/api/auth/pengajuan/", formData,{

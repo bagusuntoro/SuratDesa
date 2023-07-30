@@ -25,7 +25,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       form: (_form = {
         nama: "",
         jenis_surat: ""
-      }, _defineProperty(_form, "nama", ""), _defineProperty(_form, "nik", ""), _defineProperty(_form, "ttl", ""), _defineProperty(_form, "jenis_kelamin", ""), _defineProperty(_form, "warganegara", ""), _defineProperty(_form, "agama", ""), _defineProperty(_form, "pekerjaan", ""), _defineProperty(_form, "alamat", ""), _defineProperty(_form, "status", ""), _defineProperty(_form, "bukti_diri", ""), _defineProperty(_form, "keperluan", ""), _defineProperty(_form, "tujuan", ""), _defineProperty(_form, "berlaku_mulai", ""), _defineProperty(_form, "keterangan", ""), _defineProperty(_form, "status_surat", ""), _defineProperty(_form, "user_id", ""), _form),
+      }, _defineProperty(_form, "nama", ""), _defineProperty(_form, "nik", ""), _defineProperty(_form, "ttl", ""), _defineProperty(_form, "jenis_kelamin", ""), _defineProperty(_form, "warganegara", ""), _defineProperty(_form, "agama", ""), _defineProperty(_form, "pekerjaan", ""), _defineProperty(_form, "alamat", ""), _defineProperty(_form, "status", ""), _defineProperty(_form, "bukti_diri", ""), _defineProperty(_form, "keperluan", ""), _defineProperty(_form, "tujuan", ""), _defineProperty(_form, "berlaku_mulai", ""), _defineProperty(_form, "keterangan", ""), _defineProperty(_form, "user_id", ""), _form),
       user_id: ''
     };
   },
@@ -48,7 +48,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       formData.append("tujuan", this.form.tujuan);
       formData.append("berlaku_mulai", this.form.berlaku_mulai);
       formData.append("keterangan", this.form.keterangan);
-      formData.append("status_surat", this.form.status_surat);
+      // formData.append("status_surat", this.form.status_surat);
       formData.append("user_id", this.user_id);
       axios__WEBPACK_IMPORTED_MODULE_0___default().post("https://surat-desa.surabayawebtech.com/api/auth/pengajuan/", formData, {
         headers: {
