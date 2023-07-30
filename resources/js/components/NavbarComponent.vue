@@ -114,7 +114,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://localhost:8000/api/auth/me/`, {
+      .get(`http://surat-desa.surabayawebtech.com/api/auth/me/`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
