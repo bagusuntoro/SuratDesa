@@ -76,7 +76,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context2.prev = 0;
               _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://surat-desa.surabayawebtech.com/api/auth/me/", {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://surat-desa.surabayawebtech.com/api/auth/me", {
                 headers: {
                   Authorization: 'Bearer ' + localStorage.getItem('token')
                 }
@@ -102,7 +102,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   created: function created() {
     var _this3 = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://surat-desa.surabayawebtech.com/api/auth/me/", {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://surat-desa.surabayawebtech.com/api/auth/me", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }

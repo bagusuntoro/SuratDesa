@@ -31,7 +31,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append("name", this.form.name);
       formData.append("email", this.form.email);
       formData.append("password", this.form.password);
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post("https://surat-desa.surabayawebtech.com/api/auth/register/", formData, {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("https://surat-desa.surabayawebtech.com/api/auth/register", formData, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token")
         }
@@ -51,7 +51,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     var _this3 = this;
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://surat-desa.surabayawebtech.com/api/auth/me/", {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://surat-desa.surabayawebtech.com/api/auth/me", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }

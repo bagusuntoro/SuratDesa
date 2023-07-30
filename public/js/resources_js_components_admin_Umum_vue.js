@@ -69,7 +69,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _this2.itemID = _this2.$route.params.id;
               _context2.next = 3;
-              return axios.get("/api/auth/pengajuan/".concat(_this2.itemID), {
+              return axios.get("https://surat-desa.surabayawebtech.com/api/auth/pengajuan/".concat(_this2.itemID), {
                 headers: {
                   Authorization: "Bearer " + localStorage.getItem("token")
                 }
@@ -115,7 +115,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               formData.append("pengajuan_id", _this3.pengajuanSurat.id);
               _context3.prev = 8;
               _context3.next = 11;
-              return axios.post("/api/auth/surat", formData, {
+              return axios.post("https://surat-desa.surabayawebtech.com/api/auth/surat", formData, {
                 headers: {
                   Authorization: "Bearer " + localStorage.getItem("token")
                 }
@@ -160,7 +160,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 status_surat: "selesai"
               };
               _context4.next = 4;
-              return axios.put("/api/auth/pengajuan/".concat(_this4.pengajuanSurat.id), statusData, {
+              return axios.put("https://surat-desa.surabayawebtech.com/api/auth/pengajuan/".concat(_this4.pengajuanSurat.id), statusData, {
                 headers: {
                   Authorization: "Bearer " + localStorage.getItem("token")
                 }
@@ -198,7 +198,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   created: function created() {
     var _this6 = this;
-    axios.get("https://surat-desa.surabayawebtech.com/api/auth/me/", {
+    axios.get("https://surat-desa.surabayawebtech.com/api/auth/me", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token")
       }

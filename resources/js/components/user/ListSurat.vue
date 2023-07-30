@@ -98,7 +98,7 @@ export default {
     async fetchUser() {
       try {
         const response = await axios.get(
-          `https://surat-desa.surabayawebtech.com/api/auth/me/`,{
+          `https://surat-desa.surabayawebtech.com/api/auth/me`,{
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
           }
@@ -113,7 +113,7 @@ export default {
   },
   created() {
     axios
-      .get(`https://surat-desa.surabayawebtech.com/api/auth/me/`, {
+      .get(`https://surat-desa.surabayawebtech.com/api/auth/me`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

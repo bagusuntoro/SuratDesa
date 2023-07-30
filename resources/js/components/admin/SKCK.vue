@@ -196,7 +196,7 @@ export default {
     },
     async fetchData() {
       this.itemID = this.$route.params.id;
-      const response = await axios.get(`/api/auth/pengajuan/${this.itemID}`, {
+      const response = await axios.get(`https://surat-desa.surabayawebtech.com/api/auth/pengajuan/${this.itemID}`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
@@ -230,7 +230,7 @@ export default {
       formData.append("pengajuan_id", this.pengajuanSurat.id);
 
       try {
-        const response = await axios.post(`/api/auth/surat`, formData, {
+        const response = await axios.post(`https://surat-desa.surabayawebtech.com/api/auth/surat`, formData, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
@@ -255,7 +255,7 @@ export default {
       try {
         const statusData = { status_surat: "selesai" };
         const response = await axios.put(
-          `/api/auth/pengajuan/${this.pengajuanSurat.id}`,
+          `https://surat-desa.surabayawebtech.com/api/auth/pengajuan/${this.pengajuanSurat.id}`,
           statusData,
           {
             headers: {
@@ -283,7 +283,7 @@ export default {
 
   created() {
     axios
-      .get(`https://surat-desa.surabayawebtech.com/api/auth/me/`, {
+      .get(`https://surat-desa.surabayawebtech.com/api/auth/me`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
