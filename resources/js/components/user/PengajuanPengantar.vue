@@ -312,7 +312,7 @@ export default {
       // formData.append("status_surat", this.form.status_surat);
       formData.append("user_id", this.user_id);
 
-      axios.post("https://surat-desa.surabayawebtech.com/api/auth/pengajuan/", formData,{
+      axios.post("https://surat-desa.surabayawebtech.com/api/auth/pengajuan-surat", formData,{
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
           }

@@ -31,7 +31,7 @@ Route::group([
         Route::get('surat',[SuratController::class,'listSurat']);
         Route::post('surat',[SuratController::class,'createSurat']);
         Route::get('pengajuan/{id}',[PengajuanSuratController::class,'getById']);
-        Route::post('pengajuan',[PengajuanSuratController::class,'createPengajuanSurat']);
+        Route::post('pengajuan-surat',[PengajuanSuratController::class,'createPengajuanSurat']);
         Route::get('pengajuan',[PengajuanSuratController::class,'listPengajuanSurat']);
         Route::put('pengajuan/{id}',[PengajuanSuratController::class,'updatePengajuanSurat']);
         Route::get('pengajuan-user/{id}',[PengajuanSuratController::class,'pengajuanByUser']);
