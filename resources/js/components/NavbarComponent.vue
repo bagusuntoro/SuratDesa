@@ -88,7 +88,7 @@ export default {
     },
     logout() {
       axios
-        .get(`http://localhost:8000/api/auth/logout/`, {
+        .get(`http://surat-desa.surabayawebtech.com/api/auth/logout/`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },

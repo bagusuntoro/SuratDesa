@@ -89,7 +89,7 @@ export default {
     async fetchData()
     {
       try {
-        const response = await axios.get(`http://localhost:8000/api/auth/detail-user/${this.itemID}`,{
+        const response = await axios.get(`http://surat-desa.surabayawebtech.com/api/auth/detail-user/${this.itemID}`,{
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
           }
@@ -108,7 +108,7 @@ export default {
       }
 
       axios
-        .put(`http://localhost:8000/api/auth/update-user/${this.itemID}`, formData, {
+        .put(`http://surat-desa.surabayawebtech.com/api/auth/update-user/${this.itemID}`, formData, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
@@ -125,7 +125,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://localhost:8000/api/auth/me/`, {
+      .get(`http://surat-desa.surabayawebtech.com/api/auth/me/`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

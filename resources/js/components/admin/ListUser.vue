@@ -78,7 +78,7 @@ export default {
   methods: {
     async fetchUser() {
       try {
-        const response = await axios.get("http://localhost:8000/api/auth/list-user",{
+        const response = await axios.get("http://surat-desa.surabayawebtech.com/api/auth/list-user",{
           headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
           }
@@ -103,7 +103,7 @@ export default {
         // Jika user mengklik tombol "Hapus"
         // Lakukan proses delete
         axios
-          .delete(`http://localhost:8000/api/auth/delete-user/${id}`, {
+          .delete(`http://surat-desa.surabayawebtech.com/api/auth/delete-user/${id}`, {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("token"),
             },
@@ -134,7 +134,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://localhost:8000/api/auth/me/`, {
+      .get(`http://surat-desa.surabayawebtech.com/api/auth/me/`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

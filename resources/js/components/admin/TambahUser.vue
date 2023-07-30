@@ -98,7 +98,7 @@ export default {
       formData.append("password", this.form.password);
 
       axios
-        .post("http://localhost:8000/api/auth/register/", formData, {
+        .post("http://surat-desa.surabayawebtech.com/api/auth/register/", formData, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
@@ -119,7 +119,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://localhost:8000/api/auth/me/`, {
+      .get(`http://surat-desa.surabayawebtech.com/api/auth/me/`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

@@ -203,7 +203,7 @@ export default {
     async fetchPengajuan() {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/auth/pengajuan",
+          "http://surat-desa.surabayawebtech.com/api/auth/pengajuan",
           {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("token"),
@@ -304,7 +304,7 @@ export default {
 
   created() {
     axios
-      .get(`http://localhost:8000/api/auth/me/`, {
+      .get(`http://surat-desa.surabayawebtech.com/api/auth/me/`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
