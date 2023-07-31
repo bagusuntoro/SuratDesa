@@ -141,7 +141,7 @@
 
                   <div class="row">
                     <div class="col-sm-6"></div>
-                    <div class="col-sm-6 float-end">Tanjungrejo,</div>
+                    <div class="col-sm-6 float-end">Tanjungrejo, {{ pengajuanSurat.created_at }}</div>
                   </div>
 
                   <div class="row mt-3">
