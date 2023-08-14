@@ -49,7 +49,17 @@
                   </p>
                   <p class="text-center">PENGANTAR</p>
                   <p class="text-center">
-                    Nomor : 0{{ jumlahPengajuan }}/0{{ itemID }}/ VII/2023
+                    <span v-if="nomor_surat != null">{{ nomor_surat }}</span>
+                    <!-- modal -->
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"
+                      v-if="nomor_surat === null"
+                    >
+                      Input Nomor Surat
+                    </button>
                   </p>
                   <p>
                     Yang bertandatangan di bawah ini kami Kepala Desa
@@ -156,6 +166,72 @@
       </div>
       <!-- End of Main Content -->
 
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                Masukkan Nomor Surat
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form @submit.prevent="handleSubmit" enctype="multipart/form-data">
+                <div class="row">
+                  <div class="mb-3">
+                    <label for="nomor surat" class="form-label"
+                      >Nomor Surat</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nomor_surat"
+                      placeholder="masukkan nomor surat"
+                      v-model="nomor_surat"
+                    />
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-6">
+                      <button
+                        type="button"
+                        class="btn btn-danger mb-5"
+                        data-bs-dismiss="modal"
+                      >
+                        Batal
+                      </button>
+                    </div>
+                    <div class="col-6">
+                      <button
+                        type="submit"
+                        class="btn btn-primary"
+                        style="float: right"
+                        data-bs-dismiss="modal"
+                      >
+                        Simpan
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Footer -->
       <footer />
       <!-- End of Footer -->
@@ -175,6 +251,7 @@ export default {
       itemID: null,
       user_id: "",
       jumlahPengajuan: null,
+      nomor_surat: null
     };
   },
   name: "app",

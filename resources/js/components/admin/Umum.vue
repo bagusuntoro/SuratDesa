@@ -37,7 +37,17 @@
                   <hr />
                   <h6 class="fw-bold text-center">No Kode Desa/Kelurahan</h6>
                   <p class="text-center">
-                    Nomor : 0{{ jumlahPengajuan }}/0{{ itemID }}/VI/2023
+                    <span v-if="nomor_surat != null">{{ nomor_surat }}</span>
+                    <!-- modal -->
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"
+                      v-if="nomor_surat === null"
+                    >
+                      Input Nomor Surat
+                    </button>
                   </p>
                   <p>Yang bertanda tangan dibawah ini menerangkan bahwa :</p>
                   <div class="row">
@@ -141,7 +151,9 @@
 
                   <div class="row">
                     <div class="col-sm-6"></div>
-                    <div class="col-sm-6 float-end">Tanjungrejo, {{ pengajuanSurat.created_at }}</div>
+                    <div class="col-sm-6 float-end">
+                      Tanjungrejo, {{ pengajuanSurat.created_at }}
+                    </div>
                   </div>
 
                   <div class="row mt-3">
@@ -177,6 +189,72 @@
       </div>
       <!-- End of Main Content -->
 
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                Masukkan Nomor Surat
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form @submit.prevent="handleSubmit" enctype="multipart/form-data">
+                <div class="row">
+                  <div class="mb-3">
+                    <label for="nomor surat" class="form-label"
+                      >Nomor Surat</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nomor_surat"
+                      placeholder="masukkan nomor surat"
+                      v-model="nomor_surat"
+                    />
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-6">
+                      <button
+                        type="button"
+                        class="btn btn-danger mb-5"
+                        data-bs-dismiss="modal"
+                      >
+                        Batal
+                      </button>
+                    </div>
+                    <div class="col-6">
+                      <button
+                        type="submit"
+                        class="btn btn-primary"
+                        style="float: right"
+                        data-bs-dismiss="modal"
+                      >
+                        Simpan
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Footer -->
       <footer />
       <!-- End of Footer -->
@@ -196,6 +274,7 @@ export default {
       itemID: null,
       user_id: "",
       jumlahPengajuan: null,
+      nomor_surat: null,
     };
   },
   name: "app",
@@ -217,11 +296,14 @@ export default {
     },
     async fetchData() {
       this.itemID = this.$route.params.id;
-      const response = await axios.get(`https://surat-desa.surabayawebtech.com/api/auth/pengajuan/${this.itemID}`, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      });
+      const response = await axios.get(
+        `https://surat-desa.surabayawebtech.com/api/auth/pengajuan/${this.itemID}`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      );
       this.pengajuanSurat = response.data.data;
       console.log("id :", this.pengajuanSurat.nama);
 
@@ -251,11 +333,15 @@ export default {
       formData.append("pengajuan_id", this.pengajuanSurat.id);
 
       try {
-        const response = await axios.post(`https://surat-desa.surabayawebtech.com/api/auth/surat`, formData, {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        });
+        const response = await axios.post(
+          `https://surat-desa.surabayawebtech.com/api/auth/surat`,
+          formData,
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
         console.log("test", response.data.message);
         if (!response.data.message) {
           // Mengubah pengecekan respon karena tidak ada response.ok pada axios

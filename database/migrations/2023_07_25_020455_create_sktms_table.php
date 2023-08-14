@@ -17,7 +17,7 @@ class CreateSktmsTable extends Migration
             $table->id();
             $table->string('nama_pemohon');
             $table->string('ttl_pemohon');
-            $table->string('nik_pemohon')->unique();
+            $table->string('nik_pemohon');
             $table->string('pendidikan_pemohon');
             $table->enum('jenis_kelamin_pemohon',['laki','perempuan']);
             
@@ -27,7 +27,7 @@ class CreateSktmsTable extends Migration
             $table->string('agama_orangtua');
             $table->string('status_pernikahan_orangtua');
             $table->string('warganegara_orangtua');
-            $table->string('no_kk')->unique();
+            $table->string('no_kk');
             $table->string('nik_orangtua')->unique();
             $table->string('pekerjaan_orangtua');
             $table->string('alamat_orangtua');

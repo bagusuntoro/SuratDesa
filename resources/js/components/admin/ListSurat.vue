@@ -81,16 +81,6 @@
                           </li>
                         </ul>
                       </div>
-                      <!-- <button
-                        type="button"
-                        @click="detail(item.id)"
-                        class="btn btn-warning"
-                      >
-                        <i class="bi bi-ticket-detailed"></i>
-                      </button>
-                      <button @click="deleteItem(item.id)" class="btn btn-danger">
-                        <i class="bi bi-trash3"></i>
-                      </button> -->
                     </td>
                   </tr>
                 </tbody>
@@ -216,6 +206,14 @@ export default {
 </script>
 
 <style scoped>
+@media (min-width: 768px) { /* Ubah ukuran sesuai kebutuhan */
+  .table-responsive{
+    display:inline;
+    width:100%;
+    overflow-x:hidden;
+    /* -webkit-overflow-scrolling:touch */
+    }
+}
 span {
   cursor: auto !important;
 }

@@ -25,7 +25,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       fileName: "",
       itemID: null,
       user_id: "",
-      jumlahPengajuan: null
+      jumlahPengajuan: null,
+      nomor_surat: null
     };
   },
   name: "app",
@@ -304,7 +305,14 @@ var render = function render() {
     staticClass: "text-center"
   }, [_vm._v("PENGANTAR")]), _vm._v(" "), _c("p", {
     staticClass: "text-center"
-  }, [_vm._v("\n                  Nomor : 0" + _vm._s(_vm.jumlahPengajuan) + "/0" + _vm._s(_vm.itemID) + "/ VII/2023\n                ")]), _vm._v(" "), _c("p", [_vm._v("\n                  Yang bertandatangan di bawah ini kami Kepala Desa\n                  Tanjungrejo Kecamatan Nguter Kabupaten Sukoharjo,\n                  menerangkan bahwa :\n                ")]), _vm._v(" "), _c("div", {
+  }, [_vm.nomor_surat != null ? _c("span", [_vm._v(_vm._s(_vm.nomor_surat))]) : _vm._e(), _vm._v(" "), _vm.nomor_surat === null ? _c("button", {
+    staticClass: "btn btn-primary",
+    attrs: {
+      type: "button",
+      "data-bs-toggle": "modal",
+      "data-bs-target": "#staticBackdrop"
+    }
+  }, [_vm._v("\n                    Input Nomor Surat\n                  ")]) : _vm._e()]), _vm._v(" "), _c("p", [_vm._v("\n                  Yang bertandatangan di bawah ini kami Kepala Desa\n                  Tanjungrejo Kecamatan Nguter Kabupaten Sukoharjo,\n                  menerangkan bahwa :\n                ")]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-sm-4"
@@ -410,7 +418,64 @@ var render = function render() {
     staticClass: "fw-bold text-center"
   }, [_vm._v("\n                        (" + _vm._s(_vm.pengajuanSurat.nama) + ")\n                      ")])])]), _vm._v(" "), _vm._m(2)])]), _vm._v(" "), _c("div", {
     staticClass: "col-sm-1"
-  })])])])])], 1), _vm._v(" "), _c("footer")])], 1);
+  })])])])])], 1), _vm._v(" "), _c("div", {
+    staticClass: "modal fade",
+    attrs: {
+      id: "staticBackdrop",
+      "data-bs-backdrop": "static",
+      "data-bs-keyboard": "false",
+      tabindex: "-1",
+      "aria-labelledby": "staticBackdropLabel",
+      "aria-hidden": "true"
+    }
+  }, [_c("div", {
+    staticClass: "modal-dialog"
+  }, [_c("div", {
+    staticClass: "modal-content"
+  }, [_vm._m(3), _vm._v(" "), _c("div", {
+    staticClass: "modal-body"
+  }, [_c("form", {
+    attrs: {
+      enctype: "multipart/form-data"
+    },
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.handleSubmit.apply(null, arguments);
+      }
+    }
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "nomor surat"
+    }
+  }, [_vm._v("Nomor Surat")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.nomor_surat,
+      expression: "nomor_surat"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "nomor_surat",
+      placeholder: "masukkan nomor surat"
+    },
+    domProps: {
+      value: _vm.nomor_surat
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.nomor_surat = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _vm._m(4)])])])])])]), _vm._v(" "), _c("footer")])], 1);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -462,6 +527,49 @@ var staticRenderFns = [function () {
   }, [_c("p", {
     staticClass: "fw-bold text-center"
   }, [_vm._v("\n                        (FERI PRIHANANTO, S.E)\n                      ")])])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "modal-header"
+  }, [_c("h1", {
+    staticClass: "modal-title fs-5",
+    attrs: {
+      id: "staticBackdropLabel"
+    }
+  }, [_vm._v("\n              Masukkan Nomor Surat\n            ")]), _vm._v(" "), _c("button", {
+    staticClass: "btn-close",
+    attrs: {
+      type: "button",
+      "data-bs-dismiss": "modal",
+      "aria-label": "Close"
+    }
+  })]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "row mt-3"
+  }, [_c("div", {
+    staticClass: "col-6"
+  }, [_c("button", {
+    staticClass: "btn btn-danger mb-5",
+    attrs: {
+      type: "button",
+      "data-bs-dismiss": "modal"
+    }
+  }, [_vm._v("\n                      Batal\n                    ")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-6"
+  }, [_c("button", {
+    staticClass: "btn btn-primary",
+    staticStyle: {
+      "float": "right"
+    },
+    attrs: {
+      type: "submit",
+      "data-bs-dismiss": "modal"
+    }
+  }, [_vm._v("\n                      Simpan\n                    ")])])]);
 }];
 render._withStripped = true;
 

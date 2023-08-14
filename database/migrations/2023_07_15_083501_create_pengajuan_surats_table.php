@@ -17,7 +17,7 @@ class CreatePengajuanSuratsTable extends Migration
             $table->id();
             $table->enum('jenis_surat',['Pengantar Umum','Pengantar SKCK']);
             $table->string('nama');
-            $table->string('nik')->unique();
+            $table->string('nik');
             $table->string('ttl');
             $table->enum('jenis_kelamin',['Laki-laki','Perempuan']);
             $table->string('warganegara');
